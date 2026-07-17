@@ -1,0 +1,68 @@
+name: Publish Release Binaries
+
+# Triggered by a repository_dispatch event sent from the private build repo,
+# or manually from the Actions tab.
+#
+# The private repo (financialAgent-private) calls this after its own build
+# completes by sending a repository_dispatch event.
+on:
+  repository_dispatch:
+    types: [new-release]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to publish (e.g. 1.0.0)"
+        required: true
+      private_repo:
+        description: "Source private repo (owner/repo)"
+        required: true
+        default: "malfihasan/financialAgent-private"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@v4
+
+      - name: Resolve version and source repo
+        id: vars
+        run: |
+          if [[ "${{ github.event_name }}" == "repository_dispatch" ]]; then
+            VERSION="${{ github.event.client_payload.version }}"
+            PRIVATE_REPO="${{ github.event.client_payload.private_repo }}"
+          else
+            VERSION="${{ github.event.inputs.version }}"
+            PRIVATE_REPO="${{ github.event.inputs.private_repo }}"
+          fi
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "private_repo=${PRIVATE_REPO}" >> "$GITHUB_OUTPUT"
+          echo "Publishing v${VERSION} from ${PRIVATE_REPO}"
+
+      - name: Download release assets from private repo
+        env:
+          GH_TOKEN: ${{ secrets.PRIVATE_REPO_TOKEN }}
+          VERSION: ${{ steps.vars.outputs.version }}
+          PRIVATE_REPO: ${{ steps.vars.outputs.private_repo }}
+        run: |
+          mkdir -p release-assets
+          gh release download "v${VERSION}" \
+            --repo "${PRIVATE_REPO}" \
+            --dir release-assets \
+            --pattern "FinAgent-*"
+          echo "Downloaded assets:"
+          ls -lh release-assets/
+
+      - name: Create public GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.vars.outputs.version }}
+          name: FinAgent v${{ steps.vars.outputs.version }}
+          draft: false
+          prerelease: false
+          body_path: INSTALL.md
+          files: release-assets/*
