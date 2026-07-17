@@ -14,15 +14,22 @@
 
 ## What is FinAgent?
 
-FinAgent automatically categorizes your bank statement transactions using:
+FinAgent is a **terminal / CLI application** that automatically categorizes your bank statement
+transactions using a multi-stage pipeline:
 
 - **Rule engine** — fast, deterministic keyword and merchant rules
 - **Location lookup** — Nominatim / OpenStreetMap to identify merchants by address
-- **Local LLM** — Ollama with `qwen2.5:3b` (runs 100 % on your machine, no cloud)
+- **Local LLM** — Ollama (runs 100 % on your machine, no cloud required)
 - **Cloud LLM** (optional) — Anthropic Claude or OpenRouter for highest accuracy
 
-Everything is processed locally. No data ever leaves your computer unless you
-choose a cloud LLM provider.
+After processing, a local web **dashboard** opens automatically in your browser so you can
+explore spending charts, track budgets, and review categories — no cloud sync, no accounts.
+
+> **CLI-first design**: FinAgent runs in your terminal. The `.dmg` / `.tar.gz` / `.zip`
+> installers package the same command-line tool — they don't open a GUI window on launch.
+> See [Installation](#installation) for how to get `finagent` on your PATH.
+
+Everything is processed locally. No data leaves your computer unless you choose a cloud LLM.
 
 ---
 
@@ -32,10 +39,10 @@ choose a cloud LLM provider.
 |---------|---------|
 | Supported banks | Bank of America · Amex · Chase · Citi · US Bank |
 | Categorization | Rules + location lookup + optional LLM fallback |
-| Dashboard | React web dashboard with charts, budget tracking, category drill-down |
+| Dashboard | React web dashboard — charts, budget tracking, category drill-down |
 | LLM options | Ollama (free, local) · Claude API · OpenRouter · none |
-| Location lookup | Nominatim (free) · Google Maps scraping · combined |
-| First-run wizard | Interactive CLI setup — no config files to hand-edit |
+| Location lookup | Nominatim (free) · Google Maps · combined |
+| First-run wizard | Interactive CLI setup on first launch — no config files to edit |
 | Platforms | macOS · Linux · Windows |
 
 ---
@@ -54,24 +61,143 @@ Download the latest binary for your platform from the
 | Platform | File |
 |----------|------|
 | macOS (Apple Silicon + Intel) | `FinAgent-x.y.z-macOS.dmg` |
-| Linux x86_64 | `FinAgent-x.y.z-Linux-x86_64.tar.gz` |
-| Windows x64 | `FinAgent-x.y.z-Windows-x64.zip` |
-
-See [INSTALL.md](INSTALL.md) for full setup instructions.
+| Linux x86_64 | `FinAgent-x.y.z-Linux.tar.gz` |
+| Windows x64 | `FinAgent-x.y.z-Windows.zip` |
 
 ---
 
-## Quick Start (3 steps)
+## Installation
+
+### macOS
 
 ```bash
-# 1. Run the first-time setup wizard
-finagent --setup
+# 1. Download and open the .dmg, drag FinAgent.app to /Applications
 
-# 2. Drop your bank CSV downloads into the statements folder, then:
+# 2. Add finagent to your PATH (one-time — add to ~/.zshrc or ~/.bash_profile)
+export PATH="/Applications/FinAgent.app/Contents/MacOS:$PATH"
+
+# 3. Reload your shell
+source ~/.zshrc        # or: source ~/.bash_profile
+
+# 4. Verify
+finagent --version
+```
+
+> **Double-click alternative**: Double-clicking `FinAgent.app` opens a Terminal window
+> automatically and drops you into the interactive menu — no PATH setup needed for casual use.
+
+### Linux
+
+```bash
+# 1. Extract
+tar -xzf FinAgent-x.y.z-Linux.tar.gz
+
+# 2. Move to a permanent location
+sudo mv finagent/ /opt/finagent/
+
+# 3. Add to PATH
+sudo ln -s /opt/finagent/finagent /usr/local/bin/finagent
+
+# 4. Verify
+finagent --version
+```
+
+### Windows
+
+```powershell
+# 1. Extract the .zip to C:\Program Files\FinAgent\
+
+# 2. Add to PATH (System → Advanced → Environment Variables → Path)
+#    Add: C:\Program Files\FinAgent\finagent\
+
+# 3. Open a new terminal and verify
+finagent --version
+```
+
+---
+
+## First Run — Setup Wizard
+
+The **very first time** you run `finagent` (by any method), it automatically starts an
+interactive setup wizard:
+
+```
+  FinAgent v1.0.0  —  Personal Finance Categorization Engine
+
+  Welcome to FinAgent! Let's configure your workspace.
+
+  Your name: Alfi
+  Statements folder [~/Documents/FinAgent/statements]:
+  Processing output folder [~/Documents/FinAgent/processing]:
+  Dashboard port [3001]:
+  LLM provider (ollama / claude / open_router / none) [ollama]:
+  ...
+
+  ✓ Configuration saved to ~/.finagent/config.json
+```
+
+After setup, the interactive menu appears. You only do this once — settings are saved to
+`~/.finagent/config.json` and reused on every subsequent run.
+
+---
+
+## Usage
+
+### Interactive menu (no arguments)
+
+```bash
+finagent
+```
+
+```
+  Hello, Alfi!
+
+  What would you like to do?
+
+    1)  Process bank statements  →  categorize + open dashboard
+    2)  Open dashboard only      →  view results from last run
+    3)  Calculation only         →  process without opening dashboard
+    4)  Re-run setup wizard      →  change directories / LLM settings
+    5)  Exit
+```
+
+### Direct CLI (power users)
+
+```bash
+# Process all configured banks, open dashboard when done
 finagent --orgs boa,amex,chase
 
-# 3. Open the dashboard
-open http://localhost:3001
+# Filter by date range
+finagent --orgs boa,amex --start-date 20250101 --end-date 20250331
+
+# Process only (no dashboard)
+finagent --calculation-only --orgs boa,amex,chase
+
+# Open dashboard with last run's data
+finagent --dashboard-only
+
+# Re-run setup wizard
+finagent --setup
+
+# Full option reference
+finagent --help
+```
+
+### Typical monthly workflow
+
+```
+1. Export CSVs from your bank websites
+2. Drop them into your statements folder:
+      ~/Documents/FinAgent/statements/BOA/CheckingAC/
+      ~/Documents/FinAgent/statements/AMEX/CreditAC/
+      ~/Documents/FinAgent/statements/CHASE/CheckingAC/
+
+3. Run:  finagent --orgs boa,amex,chase
+
+4. Browser opens automatically at http://localhost:3001
+   → review categories, check budgets, export reports
+
+5. Press Ctrl-C to stop the dashboard server
 ```
 
 ---
@@ -82,8 +208,8 @@ open http://localhost:3001
 Your bank CSVs
       │
       ▼
-Rule Engine  ──────────────────────────────────────────────► Categorized
-(markdown rules)                                              Transactions
+Rule Engine  ──────────────────────────────────► Categorized
+(keyword + merchant rules)                       Transactions
       │ uncategorized remaining
       ▼
 Location Lookup
@@ -94,7 +220,7 @@ LLM Fallback
 (Ollama / Claude / OpenRouter)
       │
       ▼
-Final CSV + Dashboard
+Final CSV  +  Browser Dashboard (http://localhost:PORT)
 ```
 
 All processing happens on your machine. Your bank data never touches a
@@ -123,7 +249,7 @@ Found a bug or want to request a new bank? Open an issue:
 Please include:
 - Your OS and version
 - The FinAgent version (`finagent --version`)
-- What you expected vs. what happened
+- What you expected vs what happened
 - Anonymized sample CSV rows if relevant (remove all personal data)
 
 ---
@@ -132,5 +258,5 @@ Please include:
 
 FinAgent binaries are provided for **personal, non-commercial use only**.
 Redistribution or resale of the binaries is not permitted.
-
 Source code is maintained in a private repository.
+
