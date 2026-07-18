@@ -45,7 +45,7 @@ jobs:
 
       - name: Download release assets from private repo
         env:
-          GH_TOKEN: ${{ secrets.PRIVATE_REPO_TOKEN }}
+          GH_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN }}
           VERSION: ${{ steps.vars.outputs.version }}
           PRIVATE_REPO: ${{ steps.vars.outputs.private_repo }}
         run: |
