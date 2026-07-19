@@ -57,6 +57,17 @@ jobs:
           echo "Downloaded assets:"
           ls -lh release-assets/
 
+      - name: Create stable latest-download aliases
+        env:
+          VERSION: ${{ steps.vars.outputs.version }}
+        run: |
+          set -euo pipefail
+          cp "release-assets/FinAgent-${VERSION}-macOS.dmg" "release-assets/FinAgent-macOS.dmg"
+          cp "release-assets/FinAgent-${VERSION}-Linux-x86_64.tar.gz" "release-assets/FinAgent-Linux-x86_64.tar.gz"
+          cp "release-assets/FinAgent-${VERSION}-Windows-x64.zip" "release-assets/FinAgent-Windows-x64.zip"
+          echo "Release assets with stable aliases:"
+          ls -lh release-assets/
+
       - name: Create public GitHub Release
         uses: softprops/action-gh-release@v2
         with:
