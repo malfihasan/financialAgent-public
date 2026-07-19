@@ -43,6 +43,44 @@ jobs:
           echo "private_repo=${PRIVATE_REPO}" >> "$GITHUB_OUTPUT"
           echo "Publishing v${VERSION} from ${PRIVATE_REPO}"
 
+      - name: Update README release badge
+        env:
+          VERSION: ${{ steps.vars.outputs.version }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import os
+          import re
+          from pathlib import Path
+
+          path = Path("README.md")
+          version = os.environ["VERSION"]
+          badge = (
+              f"[![Latest Release](https://img.shields.io/badge/Latest%20Release-v{version}-brightgreen?style=flat-square)]"
+              "(https://github.com/malfihasan/financialAgent-public/releases/latest)"
+          )
+          text = path.read_text(encoding="utf-8")
+          pattern = re.compile(
+              r"^\[!\[Latest Release\]\([^\n]+\)\]"
+              r"\(https://github\.com/malfihasan/financialAgent-public/releases/latest\)$",
+              re.MULTILINE,
+          )
+          updated, count = pattern.subn(badge, text, count=1)
+          if count != 1:
+              raise SystemExit("Could not find README Latest Release badge line")
+          path.write_text(updated, encoding="utf-8")
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet README.md; then
+            git add README.md
+            git commit -m "docs: update release badge for v${VERSION}"
+            git push
+          else
+            echo "README badge already up to date."
+          fi
+
       - name: Download release assets from private repo
         env:
           GH_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN }}
