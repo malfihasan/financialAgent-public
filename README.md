@@ -4,7 +4,7 @@
 
 **Privacy-first personal finance engine — all data stays on your machine.**
 
-[![Latest Release](https://img.shields.io/github/v/release/malfihasan/financialAgent-public?sort=semver&style=flat-square&label=Latest%20Release)](https://github.com/malfihasan/financialAgent-public/releases/latest)
+[![Latest Release](https://img.shields.io/badge/Latest%20Release-latest-brightgreen?style=flat-square)](https://github.com/malfihasan/financialAgent-public/releases/latest)
 [![License: Personal Use](https://img.shields.io/badge/license-Personal%20Use-blue?style=flat-square)](LICENSE)
 [![Supported Platforms](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey?style=flat-square)](#download)
 
