@@ -23,8 +23,10 @@ All your data stays on your machine.
 
 ## macOS
 
-1. **Download** `FinAgent-<version>-macOS.dmg` from the
-   [Releases page](https://github.com/malfihasan/financialAgent-public/releases).
+1. **Download** the latest macOS `.dmg` from the
+   [Releases page](https://github.com/malfihasan/financialAgent-public/releases/latest)
+   or use the direct latest link:
+   [FinAgent-macOS.dmg](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-macOS.dmg).
 
 2. **Open** the `.dmg` and drag **FinAgent** to your Applications folder.
 
@@ -41,11 +43,12 @@ All your data stays on your machine.
 
 ## Linux (x86_64)
 
-1. **Download** `FinAgent-<version>-Linux-x86_64.tar.gz`.
+1. **Download** the latest Linux archive:
+   [FinAgent-Linux-x86_64.tar.gz](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Linux-x86_64.tar.gz).
 
 2. **Extract**:
    ```bash
-   tar -xzf FinAgent-<version>-Linux-x86_64.tar.gz
+   tar -xzf FinAgent-Linux-x86_64.tar.gz
    cd finagent_bundle
    ```
 
@@ -63,7 +66,8 @@ All your data stays on your machine.
 
 ## Windows
 
-1. **Download** `FinAgent-<version>-Windows-x64.zip`.
+1. **Download** the latest Windows archive:
+   [FinAgent-Windows-x64.zip](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Windows-x64.zip).
 
 2. **Extract** the zip to a folder of your choice (e.g. `C:\FinAgent`).
 

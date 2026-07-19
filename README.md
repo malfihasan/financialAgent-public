@@ -13,17 +13,16 @@
 ---
 
 ## What is FinAgent?
+FinAgent is a local personal-finance automation system. It imports bank statements, applies deterministic rules and optional generative categorization, and displays processed results in a local dashboard. The main motivation of this project is to provide a privacy-first personal finance system that runs entirely on your machine, without sending any data to the cloud or requiring login to any financial institute.
 
-FinAgent is a **terminal / CLI application** that automatically categorizes your bank statement
-transactions using a multi-stage pipeline:
+As of 2026-07-18, FinAgent supports five banks: American Express, Bank of America, Chase, Citi, and U.S. Bank. More bank workflows can be added in future releases.
 
-- **Rule engine** — fast, deterministic keyword and merchant rules
-- **Location lookup** — Nominatim / OpenStreetMap to identify merchants by address
-- **Local LLM** — Ollama (runs 100 % on your machine, no cloud required)
-- **Cloud LLM** (optional) — Anthropic Claude or OpenRouter for highest accuracy
+Current limitation: one machine is treated as one FinAgent user. The setup wizard writes one local `~/.finagent/config.json`, and all statement input plus processed output are resolved from that one local configuration. Multi-user support is planned for future releases.
 
-After processing, a local web **dashboard** opens automatically in your browser so you can
-explore spending charts, track budgets, and review categories — no cloud sync, no accounts.
+## Overview
+FinAgent is a **terminal / CLI application** that automatically processes your bank statement transactions using a multi-stage pipeline.
+
+After processing, a local web **dashboard** opens automatically in your browser so you can explore spending charts, track budgets, and review categories — no cloud sync, no accounts.
 
 > **CLI-first design**: FinAgent runs in your terminal. The `.dmg` / `.tar.gz` / `.zip`
 > installers package the same command-line tool — they don't open a GUI window on launch.
@@ -58,11 +57,13 @@ Everything is processed locally. No data leaves your computer unless you choose 
 Download the latest binary for your platform from the
 [**Releases page**](https://github.com/malfihasan/financialAgent-public/releases/latest):
 
-| Platform | File |
-|----------|------|
-| macOS (Apple Silicon + Intel) | `FinAgent-x.y.z-macOS.dmg` |
-| Linux x86_64 | `FinAgent-x.y.z-Linux.tar.gz` |
-| Windows x64 | `FinAgent-x.y.z-Windows.zip` |
+| Platform | Latest download |
+|----------|-----------------|
+| macOS (Apple Silicon + Intel) | [FinAgent macOS `.dmg`](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-macOS.dmg) |
+| Linux x86_64 | [FinAgent Linux `.tar.gz`](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Linux-x86_64.tar.gz) |
+| Windows x64 | [FinAgent Windows `.zip`](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Windows-x64.zip) |
+
+The links above always point to the latest public release. Release artifacts are published with versioned filenames on GitHub, and stable download aliases are updated automatically by the release workflow.
 
 ---
 
@@ -90,7 +91,7 @@ finagent --version
 
 ```bash
 # 1. Extract
-tar -xzf FinAgent-x.y.z-Linux.tar.gz
+tar -xzf FinAgent-Linux-x86_64.tar.gz
 
 # 2. Move to a permanent location
 sudo mv finagent/ /opt/finagent/
@@ -122,15 +123,15 @@ The **very first time** you run `finagent` (by any method), it automatically sta
 interactive setup wizard:
 
 ```
-  FinAgent v1.0.0  —  Personal Finance Categorization Engine
+  FinAgent v1.0.0  —  Personal Finance Engine
 
   Welcome to FinAgent! Let's configure your workspace.
 
-  Your name: Alfi
+  Your name: PrivateUser1
   Statements folder [~/Documents/FinAgent/statements]:
   Processing output folder [~/Documents/FinAgent/processing]:
   Dashboard port [3001]:
-  LLM provider (ollama / claude / open_router / none) [ollama]:
+  LLM provider (ollama / claude / none) [ollama]:
   ...
 
   ✓ Configuration saved to ~/.finagent/config.json
@@ -150,7 +151,7 @@ finagent
 ```
 
 ```
-  Hello, Alfi!
+  Hello, PrivateUser1!
 
   What would you like to do?
 
@@ -202,37 +203,12 @@ finagent --help
 
 ---
 
-## How It Works
-
-```
-Your bank CSVs
-      │
-      ▼
-Rule Engine  ──────────────────────────────────► Categorized
-(keyword + merchant rules)                       Transactions
-      │ uncategorized remaining
-      ▼
-Location Lookup
-(Nominatim / Google Maps)
-      │ still uncategorized
-      ▼
-LLM Fallback
-(Ollama / Claude / OpenRouter)
-      │
-      ▼
-Final CSV  +  Browser Dashboard (http://localhost:PORT)
-```
-
-All processing happens on your machine. Your bank data never touches a
-third-party server unless you explicitly configure a cloud LLM provider.
-
----
 
 ## Support This Project
 
 FinAgent is free for personal use. If it saves you time:
 
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-%E2%98%95-yellow?style=flat-square)](https://www.buymeacoffee.com/malfihasan)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-%E2%98%95-yellow?style=flat-square)](https://www.buymeacoffee.com/alfi_hasan)
 
 Monthly supporters get:
 - Priority bug fixes
