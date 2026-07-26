@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">FinAgent Logo</title>
+  <desc id="desc">A sleek, premium neon-orange-and-silver financial intelligence emblem featuring a geometric brain lattice overlapping an elegant upward growth chart.</desc>
+  <defs>
+    <!-- Background glow & shadow -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#FF5400" flood-opacity="0.3"/>
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="subtle-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+
+    <!-- Metallic gradients for premium feel -->
+    <linearGradient id="neonOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF8A00" />
+      <stop offset="50%" stop-color="#FF5400" />
+      <stop offset="100%" stop-color="#D92B00" />
+    </linearGradient>
+
+    <linearGradient id="silverMetallic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="30%" stop-color="#E2E8F0" />
+      <stop offset="70%" stop-color="#94A3B8" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+
+    <linearGradient id="cyanAccent" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF5400" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#FF7A33" stop-opacity="0.0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer deep dark ring / container -->
+  <rect width="256" height="256" rx="64" fill="#0A0A0A" stroke="#FF5400" stroke-width="2" stroke-opacity="0.15"/>
+
+  <!-- Subtle background grid lines inside the badge representing charts and structure -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1.5">
+    <line x1="32" y1="64" x2="224" y2="64" stroke="#ffffff"/>
+    <line x1="32" y1="128" x2="224" y2="128" stroke="#ffffff"/>
+    <line x1="32" y1="192" x2="224" y2="192" stroke="#ffffff"/>
+    <line x1="64" y1="32" x2="64" y2="224" stroke="#ffffff"/>
+    <line x1="128" y1="32" x2="128" y2="224" stroke="#ffffff"/>
+    <line x1="192" y1="32" x2="192" y2="224" stroke="#ffffff"/>
+  </g>
+
+  <!-- Tech/Agent Hexagon Shield -->
+  <polygon points="128,40 204,84 204,172 128,216 52,172 52,84" fill="url(#cyanAccent)" stroke="url(#silverMetallic)" stroke-width="4" stroke-linejoin="round" opacity="0.85" filter="url(#subtle-shadow)"/>
+
+  <!-- Glowing Trend Growth Bars (Left Side of Hex / Analytics) -->
+  <g opacity="0.85" filter="url(#subtle-shadow)">
+    <!-- Bar 1 -->
+    <rect x="80" y="130" width="12" height="40" rx="4" fill="url(#silverMetallic)" opacity="0.5" />
+    <!-- Bar 2 -->
+    <rect x="98" y="110" width="12" height="60" rx="4" fill="url(#silverMetallic)" opacity="0.75" />
+    <!-- Bar 3 -->
+    <rect x="116" y="90" width="12" height="80" rx="4" fill="url(#neonOrange)" />
+    <!-- Bar 4 (Target) -->
+    <rect x="134" y="70" width="12" height="100" rx="4" fill="url(#neonOrange)" />
+    <!-- Bar 5 -->
+    <rect x="152" y="85" width="12" height="85" rx="4" fill="url(#silverMetallic)" opacity="0.9" />
+  </g>
+
+  <!-- The "Agent/AI" neural net nodes & path intersecting the upward trend -->
+  <g filter="url(#glow)">
+    <!-- Main Upward Arrow / Trend Path (Fintech) -->
+    <path d="M 75 160 C 105 130, 115 110, 145 95 L 175 75" fill="none" stroke="url(#neonOrange)" stroke-width="6" stroke-linecap="round" />
+    <!-- Sleek Arrow Head -->
+    <path d="M 160 72 L 180 73 L 182 93" fill="none" stroke="url(#neonOrange)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Node points & connection lines (The "Agent" neural aspect overlaying) -->
+  <g stroke="#ffffff" stroke-opacity="0.6" stroke-width="1.5">
+    <!-- Links -->
+    <line x1="75" y1="160" x2="105" y2="120" stroke="#ffffff"/>
+    <line x1="105" y1="120" x2="145" y2="105" stroke="url(#neonOrange)" stroke-width="2" />
+    <line x1="145" y1="105" x2="180" y2="73" stroke="url(#neonOrange)" stroke-width="2" />
+    
+    <line x1="105" y1="120" x2="128" y2="150" stroke="#ffffff"/>
+    <line x1="145" y1="105" x2="128" y2="150" stroke="#ffffff"/>
+    <line x1="145" y1="105" x2="165" y2="135" stroke="#ffffff"/>
+    <line x1="180" y1="73" x2="165" y2="135" stroke="#ffffff"/>
+  </g>
+
+  <!-- Glowing interactive agent nodes -->
+  <g filter="url(#subtle-shadow)">
+    <!-- Node 1 -->
+    <circle cx="75" cy="160" r="5" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1.5" />
+    <!-- Node 2 -->
+    <circle cx="105" cy="120" r="5" fill="#FF8A00" stroke="#FFFFFF" stroke-width="1.5" />
+    <!-- Node 3 -->
+    <circle cx="145" cy="105" r="6" fill="#FF5400" stroke="#FFFFFF" stroke-width="2" />
+    <!-- Node 4 (Peak) -->
+    <circle cx="180" cy="73" r="6" fill="#FF5400" stroke="#FFFFFF" stroke-width="2" />
+    <!-- Sub Node 5 -->
+    <circle cx="128" cy="150" r="4" fill="#FFFFFF" stroke="#475569" stroke-width="1" />
+    <!-- Sub Node 6 -->
+    <circle cx="165" cy="135" r="4" fill="#E2E8F0" stroke="#475569" stroke-width="1" />
+  </g>
+
+  <!-- Futuristic Orbit Core Accent -->
+  <circle cx="128" cy="128" r="88" fill="none" stroke="url(#neonOrange)" stroke-width="1.5" stroke-dasharray="10, 15" opacity="0.3"/>
+</svg>

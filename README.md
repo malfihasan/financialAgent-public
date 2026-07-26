@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/finagent-logo.png" alt="FinAgent logo" width="160">
+<img src="assets/finagent-logo.svg" alt="FinAgent logo" width="160">
 
 # FinAgent
 
