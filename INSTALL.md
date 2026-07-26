@@ -140,24 +140,39 @@ finagent --orgs amex --llm-provider claude
 
 ## Viewing the Dashboard
 
-After a successful run, copy the output file into the dashboard data folder:
+FinAgent automatically merges processed transactions into one persistent
+`dashboard_data/master_transactions.csv` file. No manual file copy is required.
+Categories changed on the Transactions page are retained on subsequent runs.
+
+The dashboard starts after normal processing when you approve the launch prompt.
+Open **http://localhost:3001** (or your configured port). To open the last view
+without processing again, run `finagent --dashboard-only`.
+
+Date arguments create an inclusive dashboard-wide view without deleting older
+master data:
 
 ```bash
-cp ~/Documents/FinAgent/processing/processing_dir/transaction_data/final_categorized_transactions_*.csv \
-   ~/Documents/FinAgent/processing/processing_dir/dashboard_data/
+finagent --start-date 20260101 --end-date 20260201
 ```
 
-Then open your browser at **http://localhost:3001** (or the port you chose).
+A later processing run without date arguments restores the full-history view.
 
-The dashboard starts automatically with the `finagent` command.  
-To start it standalone: `finagent --dashboard-only`.
+Dashboard master maintenance is intentionally terminal-only:
+
+```bash
+finagent --overwrite-dashboard-data
+finagent --delete-dashboard-data
+```
+
+When exporting a budget month that already exists, FinAgent asks before replacing
+the saved archive. Cancelling leaves the existing archive unchanged.
 
 ---
 
 ## Troubleshooting
 
-**"No transaction CSV found"** — Make sure you copied the output file into the
-`dashboard_data/` folder (see above).
+**"No transaction CSV found"** — Run normal statement processing to create or
+update `dashboard_data/master_transactions.csv`.
 
 **"Ollama not found"** — Install Ollama from [ollama.com](https://ollama.com/) and
 pull your chosen model: `ollama pull qwen2.5:3b`.
