@@ -46,7 +46,15 @@ Download the latest build from the
 See [INSTALL.md](INSTALL.md) for platform requirements, installation, first-run
 setup, statement folders, commands, and troubleshooting.
 
-## 💬 Support
+## � Documentation
+
+FinAgent ships with a full offline documentation site — installation,
+first-run setup, terminal utilities, profile management, and a configuration
+reference. Once FinAgent is running, open
+`http://localhost:<dashboard port + 2>` (port `3002` by default), or use the
+documentation links inside the dashboard's Settings page and footer.
+
+## �💬 Support
 
 Found a bug or need support for another bank? Open an
 [issue](https://github.com/malfihasan/financialAgent-public/issues) with your OS,
