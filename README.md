@@ -17,32 +17,61 @@ and financial trends without requiring bank credentials or a hosted FinAgent acc
 Statement files, rules, configuration, and processed results remain in folders you
 control on your computer.
 
-## � Documentation
+## 📚 Documentation
 
 Full installation, setup, terminal, and configuration guides are available online:
 **[https://malfihasan.github.io/financialAgent-public/docs/](https://malfihasan.github.io/financialAgent-public/docs/)**
 
-## �🚀 Installation
+## 🚀 Installation
 
 FinAgent is available for macOS, Linux, and Windows. Choose your platform:
 
 ### 🍎 macOS
 
-1. **Download** the latest macOS `.dmg` from the
-   [Releases page](https://github.com/malfihasan/financialAgent-public/releases/latest)
-   or use the direct latest link:
-   [FinAgent-macOS.dmg](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-macOS.dmg).
+1. **Download** the latest `FinAgent-<version>-macOS.dmg` from the
+   [GitHub releases page](https://github.com/malfihasan/financialAgent-public/releases/latest).
 
-2. **Open** the `.dmg` and drag **FinAgent** to your Applications folder.
+2. **Install** — open the `.dmg` and drag **FinAgent.app** into `Applications`.
 
-3. **First launch** — open Terminal and run:
-   ```bash
-   /Applications/FinAgent.app/Contents/MacOS/finagent
-   ```
-   The setup wizard will appear and guide you through configuration.
+3. **First launch — approve the security check.** The app is not distributed
+   through the App Store, so macOS Gatekeeper blocks a normal double-click
+   the first time:
+   - Right-click (or Control-click) **FinAgent.app** → **Open** → **Open**.
+   - If macOS still refuses ("Apple could not verify…"), go to
+     **System Settings → Privacy & Security**, scroll to the Security
+     section, and click **"Open Anyway"** next to the FinAgent message,
+     then confirm with your password or Touch ID.
+   - Terminal alternative (removes the quarantine flag in one step):
+     ```bash
+     xattr -dr com.apple.quarantine /Applications/FinAgent.app
+     ```
+   This approval is needed **once per install/update**.
 
-4. **Subsequent runs** — double-click the app in Finder (dashboard auto-opens)
-   or use the command line with full arguments.
+4. **Launch** — double-clicking FinAgent.app opens a Terminal window, starts
+   the app, and opens your browser on the dashboard. First run walks you
+   through the setup wizard.
+
+**Set up the `finagent` terminal alias (macOS)** — the docs and dashboard
+refer to the `finagent` command. The binary lives inside the app bundle, so
+add an alias to your shell profile:
+
+```bash
+# zsh (default on modern macOS)
+echo 'alias finagent="/Applications/FinAgent.app/Contents/MacOS/finagent"' >> ~/.zshrc
+source ~/.zshrc
+
+# bash
+echo 'alias finagent="/Applications/FinAgent.app/Contents/MacOS/finagent"' >> ~/.bash_profile
+source ~/.bash_profile
+```
+
+Verify it works: `finagent --version`. The wrapper detects how it was
+invoked — from a shell it runs inline (all
+[terminal flags](https://malfihasan.github.io/financialAgent-public/docs/terminal/)
+work as expected); from Finder it opens Terminal.app for you.
+
+> See the full [macOS installation guide](https://malfihasan.github.io/financialAgent-public/docs/installation/#macos-quick-start)
+> for more detail.
 
 ### 🐧 Linux (x86_64)
 
@@ -202,7 +231,7 @@ Download the latest build from the
 See [INSTALL.md](INSTALL.md) for platform requirements, installation, first-run
 setup, statement folders, commands, and troubleshooting.
 
-## � Documentation
+## 📚 Documentation
 
 FinAgent ships with a full offline documentation site — installation,
 first-run setup, terminal utilities, profile management, and a configuration
@@ -213,7 +242,7 @@ reference. You can also access the documentation online:
   `http://localhost:<dashboard port + 2>` (port `3002` by default), or use the
 documentation links inside the dashboard's Settings page and footer.
 
-## �💬 Support
+## 💬 Support
 
 Found a bug or need support for another bank? Open an
 [issue](https://github.com/malfihasan/financialAgent-public/issues) with your OS,
