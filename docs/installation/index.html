@@ -348,6 +348,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#setting-up-an-llm-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Setting up an LLM provider
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting up an LLM provider">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-ollama-local-free-private-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Option A — Ollama (local, free, private, recommended)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-openrouter-cloud-api-free-to-get-a-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Option B — OpenRouter (cloud API — <strong>free to get a key</strong>)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-c-claude-anthropic-cloud-api-paid" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Option C — Claude / Anthropic (cloud API — <strong>paid</strong>)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#where-finagent-stores-things" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -676,6 +726,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#setting-up-an-llm-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Setting up an LLM provider
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting up an LLM provider">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-ollama-local-free-private-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Option A — Ollama (local, free, private, recommended)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-openrouter-cloud-api-free-to-get-a-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Option B — OpenRouter (cloud API — <strong>free to get a key</strong>)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-c-claude-anthropic-cloud-api-paid" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Option C — Claude / Anthropic (cloud API — <strong>paid</strong>)
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#where-finagent-stores-things" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -706,27 +806,35 @@
 Pick your platform below.</p>
 <h2 id="macos-quick-start">macOS quick start<a class="headerlink" href="#macos-quick-start" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>Download</strong> the latest <code>FinAgent-&lt;version&gt;-macOS.dmg</code> from the
-   <a href="https://github.com/malfihasan/financialAgent-public/releases">GitHub releases page</a>.</li>
-<li><strong>Install:</strong> open the DMG and drag <strong>FinAgent.app</strong> into <code>Applications</code>.</li>
 <li>
-<p><strong>First launch — approve the security check.</strong> The app is not distributed
-   through the App Store, so macOS Gatekeeper blocks a normal double-click
-   the first time:</p>
+<p><strong>Install Node.js (required for the dashboard).</strong> FinAgent's dashboard is a
+   Node.js server that the app launches for you — it needs <code>node</code> available on
+   your <code>PATH</code>. Install the LTS release either way:</p>
 <ul>
-<li>Right-click (or Control-click) <strong>FinAgent.app</strong> → <strong>Open</strong> → <strong>Open</strong>.</li>
-<li>If macOS still refuses ("Apple could not verify…"), go to
+<li>Download the macOS installer from <a href="https://nodejs.org/">nodejs.org</a> and
+  run it, <strong>or</strong></li>
+<li>With <a href="https://brew.sh">Homebrew</a>: <code>brew install node</code></li>
+</ul>
+<p>Verify it in a new Terminal window: <code>node --version</code> (v18 or newer; v20 LTS
+recommended).
+2. <strong>Download</strong> the latest <code>FinAgent-&lt;version&gt;-macOS.dmg</code> from the
+   <a href="https://github.com/malfihasan/financialAgent-public/releases">GitHub releases page</a>.
+3. <strong>Install:</strong> open the DMG and drag <strong>FinAgent.app</strong> into <code>Applications</code>.
+4. <strong>First launch — approve the security check.</strong> The app is not distributed
+   through the App Store, so macOS Gatekeeper blocks a normal double-click
+   the first time:
+- Right-click (or Control-click) <strong>FinAgent.app</strong> → <strong>Open</strong> → <strong>Open</strong>.
+- If macOS still refuses ("Apple could not verify…"), go to
   <strong>System Settings → Privacy &amp; Security</strong>, scroll to the Security
   section, and click <strong>"Open Anyway"</strong> next to the FinAgent message,
-  then confirm with your password or Touch ID.</li>
-<li>
-<p>Terminal alternative (removes the quarantine flag in one step):</p>
-<div class="highlight"><pre><span></span><code>xattr<span class="w"> </span>-dr<span class="w"> </span>com.apple.quarantine<span class="w"> </span>/Applications/FinAgent.app
+  then confirm with your password or Touch ID.
+- Terminal alternative (removes the quarantine flag in one step):</p>
+<div class="highlight"><pre><span></span><code>```bash
+xattr -dr com.apple.quarantine /Applications/FinAgent.app
+```
 </code></pre></div>
-</li>
-</ul>
 <p>This approval is needed <strong>once per install/update</strong>.
-4. <strong>Launch.</strong> Double-clicking FinAgent.app opens a Terminal window, starts the
+5. <strong>Launch.</strong> Double-clicking FinAgent.app opens a Terminal window, starts the
    app, and opens your browser on the dashboard. First run walks you through
    <a href="../setup/">setup</a>.</p>
 </li>
@@ -751,7 +859,21 @@ from Finder it opens Terminal.app for you.</p>
 <h2 id="linux-quick-start">Linux quick start<a class="headerlink" href="#linux-quick-start" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Download the Linux archive from the releases page and extract it:</p>
+<p><strong>Install Node.js (required for the dashboard).</strong> FinAgent launches a
+   Node.js server for the dashboard, so <code>node</code> must be on your <code>PATH</code> first:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Debian/Ubuntu — NodeSource LTS repo (gives a current version; the</span>
+<span class="c1"># distro-packaged &quot;nodejs&quot; apt package is often too old)</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://deb.nodesource.com/setup_20.x<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>-E<span class="w"> </span>bash<span class="w"> </span>-
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nodejs
+
+<span class="c1"># Fedora/RHEL</span>
+sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nodejs
+
+<span class="c1"># Arch</span>
+sudo<span class="w"> </span>pacman<span class="w"> </span>-S<span class="w"> </span>nodejs<span class="w"> </span>npm
+</code></pre></div>
+<p>Verify with <code>node --version</code> (v18+; v20 LTS recommended).
+2. Download the Linux archive from the releases page and extract it:</p>
 <div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xzf<span class="w"> </span>FinAgent-&lt;version&gt;-linux.tar.gz<span class="w"> </span>-C<span class="w"> </span>~/finagent
 </code></pre></div>
 </li>
@@ -772,12 +894,28 @@ sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>
 </ol>
 <h2 id="windows-quick-start">Windows quick start<a class="headerlink" href="#windows-quick-start" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Download the Windows <code>.zip</code> from the releases page and extract it, e.g. to
-   <code>C:\Program Files\FinAgent</code>.</li>
-<li><strong>SmartScreen approval (first run only):</strong> double-click <code>finagent.exe</code> —
-   when "Windows protected your PC" appears, click <strong>More info → Run anyway</strong>.</li>
 <li>
-<p>Optional — add FinAgent to your PATH so <code>finagent</code> works in PowerShell:
+<p><strong>Install Node.js first — this is required before FinAgent can start the
+   dashboard.</strong> FinAgent's dashboard runs as a Node.js server; the app looks
+   for <code>node</code> on your <code>PATH</code> and will not start the dashboard without it.</p>
+<ul>
+<li>Download the <strong>LTS</strong> installer from <a href="https://nodejs.org/">nodejs.org</a>
+  (the "Windows Installer (.msi)" button).</li>
+<li>Run the installer and click through with the defaults (<strong>Next → Next →
+  Install</strong>) — this also adds Node to your <code>PATH</code> automatically.</li>
+<li>
+<p>Open a <strong>new</strong> PowerShell or Command Prompt window (required so it picks
+  up the updated <code>PATH</code>) and confirm:</p>
+<div class="highlight"><pre><span></span><code><span class="n">node</span> <span class="p">-</span><span class="n">-version</span>
+</code></pre></div>
+</li>
+</ul>
+<p>You should see <code>v18</code> or newer (<code>v20.x</code> LTS recommended).
+2. Download the Windows <code>.zip</code> from the releases page and extract it, e.g. to
+   <code>C:\Program Files\FinAgent</code>.
+3. <strong>SmartScreen approval (first run only):</strong> double-click <code>finagent.exe</code> —
+   when "Windows protected your PC" appears, click <strong>More info → Run anyway</strong>.
+4. Optional — add FinAgent to your PATH so <code>finagent</code> works in PowerShell:
    <strong>Settings → System → About → Advanced system settings → Environment
    Variables</strong>, edit <code>Path</code>, and add the FinAgent folder. Then:</p>
 <div class="highlight"><pre><span></span><code><span class="n">finagent</span> <span class="p">-</span><span class="n">-version</span>
@@ -786,10 +924,101 @@ sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>
 </ol>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
 <ul>
-<li>A local LLM provider for categorization — <strong>Ollama</strong> (recommended) or
-  <strong>LM Studio</strong> — or an OpenRouter API key if you accept a cloud provider.</li>
-<li>~500 MB disk for the app plus space for your processed data.</li>
+<li><strong>Node.js 18+ (20 LTS recommended)</strong> — required on every platform. FinAgent
+  starts a small Node.js server for the dashboard and looks for <code>node</code> on your
+  <code>PATH</code>; without it the app still runs the categorization pipeline, but the
+  dashboard won't launch. See the Node.js step in the quick start above for
+  your platform.</li>
+<li>A categorization engine — pick <strong>one</strong>: <strong>Ollama</strong> (local, free, private —
+  recommended), <strong>OpenRouter</strong> (cloud API, free to sign up), or <strong>Claude</strong>
+  (cloud API, paid). Full setup steps for each are below.</li>
+<li>~500 MB disk for the app plus space for your processed data (and a few GB
+  more if you run a local Ollama model).</li>
 </ul>
+<h2 id="setting-up-an-llm-provider">Setting up an LLM provider<a class="headerlink" href="#setting-up-an-llm-provider" title="Permanent link">&para;</a></h2>
+<p>FinAgent uses an LLM to categorize transactions its rule engine can't classify
+on its own. You choose the provider during <a href="../setup/">first-run setup</a> (or
+later on the Settings page / <code>finagent --setup</code>). Pick one of the three:</p>
+<h3 id="option-a-ollama-local-free-private-recommended">Option A — Ollama (local, free, private, recommended)<a class="headerlink" href="#option-a-ollama-local-free-private-recommended" title="Permanent link">&para;</a></h3>
+<p>Runs entirely on your machine — transaction descriptions never leave your
+computer, and there's no API key or bill.</p>
+<ol>
+<li>
+<p><strong>Install Ollama:</strong></p>
+<ul>
+<li><strong>macOS:</strong> download from <a href="https://ollama.com/download">ollama.com/download</a>
+  and drag it to Applications, <strong>or</strong> <code>brew install ollama</code>.</li>
+<li><strong>Windows:</strong> download the installer from
+  <a href="https://ollama.com/download">ollama.com/download</a> and run it. Ollama
+  installs itself as a background service with a system-tray icon.</li>
+<li>
+<p><strong>Linux:</strong></p>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://ollama.com/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+</code></pre></div>
+</li>
+</ul>
+<p>Ollama starts automatically after install and listens on
+<code>http://localhost:11434</code>. Verify with:</p>
+<div class="highlight"><pre><span></span><code>ollama<span class="w"> </span>--version
+</code></pre></div>
+</li>
+<li>
+<p><strong>Pull a default model.</strong> FinAgent's built-in default is the small
+   <code>qwen2.5:3b</code>, but the newer <strong>Qwen 3</strong> family is a great free default —
+   fast, accurate enough for categorization, and light on RAM:</p>
+<div class="highlight"><pre><span></span><code>ollama<span class="w"> </span>pull<span class="w"> </span>qwen3
+</code></pre></div>
+<p>On a machine with limited RAM (≤8 GB), use the smaller tag instead:</p>
+<div class="highlight"><pre><span></span><code>ollama<span class="w"> </span>pull<span class="w"> </span>qwen3:4b
+</code></pre></div>
+</li>
+<li>
+<p><strong>Point FinAgent at the model.</strong> In FinAgent's Settings page, choose
+   <strong>Ollama</strong> as the LLM backend and set the <strong>Ollama model</strong> field to the
+   tag you pulled (e.g. <code>qwen3</code> or <code>qwen3:4b</code>). From the terminal wizard, the
+   same prompt is called "Ollama model name".</p>
+</li>
+<li>
+<p><strong>Verify it works:</strong></p>
+<div class="highlight"><pre><span></span><code>ollama<span class="w"> </span>list<span class="w">          </span><span class="c1"># confirms the model was downloaded</span>
+ollama<span class="w"> </span>run<span class="w"> </span>qwen3<span class="w"> </span><span class="s2">&quot;hi&quot;</span><span class="w"> </span><span class="c1"># quick smoke test</span>
+</code></pre></div>
+</li>
+</ol>
+<h3 id="option-b-openrouter-cloud-api-free-to-get-a-key">Option B — OpenRouter (cloud API — <strong>free to get a key</strong>)<a class="headerlink" href="#option-b-openrouter-cloud-api-free-to-get-a-key" title="Permanent link">&para;</a></h3>
+<p>OpenRouter gives you access to many hosted models through one API. Creating
+an account and generating an API key costs nothing, and OpenRouter offers
+several <code>:free</code>-tagged models you can use at no charge (paid models are
+billed per-token only if you choose one later).</p>
+<ol>
+<li>Go to <a href="https://openrouter.ai">openrouter.ai</a> and click <strong>Sign Up</strong> (GitHub,
+   Google, or email — free).</li>
+<li>Once logged in, open <a href="https://openrouter.ai/keys">openrouter.ai/keys</a>.</li>
+<li>Click <strong>Create Key</strong>, give it a name (e.g. "FinAgent"), and click <strong>Create</strong>.</li>
+<li><strong>Copy the key immediately</strong> — it's shown only once and starts with
+   <code>sk-or-...</code>.</li>
+<li>In FinAgent, choose <strong>OpenRouter</strong> as the LLM backend and paste the key
+   into the <strong>OpenRouter API key</strong> field (Settings page, or the
+   <code>finagent --setup</code> wizard).</li>
+</ol>
+<h3 id="option-c-claude-anthropic-cloud-api-paid">Option C — Claude / Anthropic (cloud API — <strong>paid</strong>)<a class="headerlink" href="#option-c-claude-anthropic-cloud-api-paid" title="Permanent link">&para;</a></h3>
+<p>Anthropic's Claude models give the highest categorization accuracy but
+require a billed API key — unlike OpenRouter, there is no free tier.</p>
+<ol>
+<li>Go to <a href="https://console.anthropic.com/">console.anthropic.com</a> and sign up
+   or log in.</li>
+<li><strong>Add billing</strong> (required before the API will work): open
+   <strong>Settings → Billing</strong>, add a payment method, and purchase API credits.
+   Anthropic bills per token — check current rates at
+   <a href="https://www.anthropic.com/pricing">anthropic.com/pricing</a> before heavy use.</li>
+<li>Open <strong>API Keys</strong> in the console sidebar and click <strong>Create Key</strong>. Name it
+   (e.g. "FinAgent") and create it.</li>
+<li><strong>Copy the key immediately</strong> — it's shown only once and starts with
+   <code>sk-ant-...</code>.</li>
+<li>In FinAgent, choose <strong>Claude</strong> as the LLM backend and paste the key into
+   the <strong>Claude API key</strong> field. The default model is <code>claude-opus-4-5</code>; you
+   can change it in the same form.</li>
+</ol>
 <h2 id="where-finagent-stores-things">Where FinAgent stores things<a class="headerlink" href="#where-finagent-stores-things" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

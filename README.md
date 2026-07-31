@@ -96,17 +96,22 @@ work as expected); from Finder it opens Terminal.app for you.
 
 ### 🪟 Windows
 
-1. **Download** the latest Windows archive:
+1. **Install [Node.js](https://nodejs.org/) 18+ (20 LTS recommended)** — required
+   to run the web dashboard. Download the Windows installer from
+   [nodejs.org](https://nodejs.org/), run it, and accept the defaults. Verify
+   it worked by opening a new Command Prompt and running `node --version`.
+
+2. **Download** the latest Windows archive:
    [FinAgent-Windows-x64.zip](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Windows-x64.zip).
 
-2. **Extract** the zip to a folder of your choice (e.g. `C:\FinAgent`).
+3. **Extract** the zip to a folder of your choice (e.g. `C:\FinAgent`).
 
-3. **Run the setup wizard** (first time only):
+4. **Run the setup wizard** (first time only):
    ```
    FinAgent.bat --setup
    ```
 
-4. **Process your statements**:
+5. **Process your statements**:
    ```
    FinAgent.bat --orgs boa,amex,chase
    ```

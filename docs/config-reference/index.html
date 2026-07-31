@@ -628,8 +628,8 @@ hand.</p>
 </tr>
 <tr>
 <td><code>llm_provider</code></td>
-<td><code>ollama</code> · <code>lmstudio</code> · <code>openrouter</code></td>
-<td>Categorization engine.</td>
+<td><code>ollama</code> · <code>open_router</code> · <code>claude</code> · <code>none</code></td>
+<td>Categorization engine (<a href="../installation/#setting-up-an-llm-provider">setup guide</a>).</td>
 </tr>
 <tr>
 <td><code>llm_model</code></td>
@@ -637,9 +637,29 @@ hand.</p>
 <td>e.g. <code>llama3.1:8b</code> for Ollama.</td>
 </tr>
 <tr>
+<td><code>ollama_model</code></td>
+<td>model name</td>
+<td>Ollama only. Default <code>qwen2.5:3b</code>; must already be pulled (<code>ollama pull &lt;model&gt;</code>), e.g. <code>qwen3</code>.</td>
+</tr>
+<tr>
+<td><code>ollama_api_url</code></td>
+<td>URL</td>
+<td>Ollama only. Default <code>http://localhost:11434</code>.</td>
+</tr>
+<tr>
 <td><code>openrouter_api_key</code></td>
 <td>string</td>
-<td>Only for the OpenRouter provider.</td>
+<td>Only for the OpenRouter provider. Free to generate at <a href="https://openrouter.ai/keys">openrouter.ai/keys</a>.</td>
+</tr>
+<tr>
+<td><code>claude_api_key</code></td>
+<td>string</td>
+<td>Only for the Claude provider. Paid — generate at <a href="https://console.anthropic.com/">console.anthropic.com</a> after adding billing.</td>
+</tr>
+<tr>
+<td><code>claude_model</code></td>
+<td>model name</td>
+<td>Claude only. Default <code>claude-opus-4-5</code>.</td>
 </tr>
 <tr>
 <td><code>location_lookup_method</code></td>
