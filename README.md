@@ -17,7 +17,12 @@ and financial trends without requiring bank credentials or a hosted FinAgent acc
 Statement files, rules, configuration, and processed results remain in folders you
 control on your computer.
 
-## 🚀 Installation
+## � Documentation
+
+Full installation, setup, terminal, and configuration guides are available online:
+**[https://malfihasan.github.io/financialAgent-public/docs/](https://malfihasan.github.io/financialAgent-public/docs/)**
+
+## �🚀 Installation
 
 FinAgent is available for macOS, Linux, and Windows. Choose your platform:
 
@@ -197,13 +202,13 @@ Download the latest build from the
 See [INSTALL.md](INSTALL.md) for platform requirements, installation, first-run
 setup, statement folders, commands, and troubleshooting.
 
-## 📚 Documentation
+## � Documentation
 
 FinAgent ships with a full offline documentation site — installation,
 first-run setup, terminal utilities, profile management, and a configuration
 reference. You can also access the documentation online:
 
-- **Online Documentation**: [https://alfihasan.github.io/financialAgent-public/docs/](https://alfihasan.github.io/financialAgent-public/docs/)
+- **Online Documentation**: [https://malfihasan.github.io/financialAgent-public/docs/](https://malfihasan.github.io/financialAgent-public/docs/)
 - **Local Dashboard**: Once FinAgent is running, open
   `http://localhost:<dashboard port + 2>` (port `3002` by default), or use the
 documentation links inside the dashboard's Settings page and footer.
