@@ -135,8 +135,14 @@ Re-run the wizard at any time with `finagent --reconfigure`.
 
 ## 📁 Adding Bank Statements
 
-1. Download your statement CSV from your bank's website.
-2. Rename the file using the convention below and drop it in the matching folder:
+1. On your bank's export page, download a **CSV** or supported tabular text
+   statement. **Do not download a PDF** — FinAgent needs transaction rows, and
+   PDF statements are not supported.
+2. Launch FinAgent and choose **Import bank statements** in the terminal menu.
+   This opens the dashboard **Import** page, where you select the bank/account
+   and upload the file. The old desktop import window is no longer used.
+
+Advanced users can instead rename the file and place it manually:
 
 | Bank | File naming | Destination folder |
 |------|------------|-------------------|
@@ -148,6 +154,34 @@ Re-run the wizard at any time with `finagent --reconfigure`.
 
 > **Tip** — Use `finagent --orgs boa --month 2026-06` to process just one bank
 > for one month while testing.
+
+### 🔑 Cloud API keys for terminal runs
+
+Keys saved through FinAgent Settings or `finagent --setup` are loaded
+automatically. If you select OpenRouter or Claude only with terminal options
+and have not saved its key, export it before starting FinAgent. The pipeline
+and dashboard server inherit the variable.
+
+```bash
+# macOS / Linux
+export OPENROUTER_API_KEY="sk-or-your-key"
+finagent --llm-provider open_router --orgs boa
+
+export ANTHROPIC_API_KEY="sk-ant-your-key"
+finagent --llm-provider claude --orgs boa
+```
+
+```powershell
+# Windows PowerShell
+$env:OPENROUTER_API_KEY = "sk-or-your-key"
+finagent --llm-provider open_router --orgs boa
+
+$env:ANTHROPIC_API_KEY = "sk-ant-your-key"
+finagent --llm-provider claude --orgs boa
+```
+
+These values apply to the current terminal session. Do not store real keys in
+committed scripts.
 
 ## ⚙️ Running the Processing Pipeline
 

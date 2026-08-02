@@ -109,8 +109,11 @@ Re-run the wizard at any time with `finagent --reconfigure`.
 
 ## Adding Bank Statements
 
-1. Download your statement CSV from your bank's website.
-2. Rename the file using the convention below and drop it in the matching folder:
+1. Download a CSV or supported tabular text statement export from your bank.
+   PDF statements are not supported.
+2. Choose **Import bank statements** from FinAgent's terminal menu to open the
+   dashboard Import page, then select the bank/account and upload the file.
+   Advanced users can instead rename it and drop it in the matching folder:
 
 | Bank | File naming | Destination folder |
 |------|------------|-------------------|
@@ -139,6 +142,24 @@ finagent --orgs boa --no-llm
 
 # Use a specific LLM backend for this run
 finagent --orgs amex --llm-provider claude
+```
+
+Keys saved during setup are loaded automatically. Otherwise, export the key
+before using a cloud provider from the terminal:
+
+```bash
+# macOS / Linux
+export OPENROUTER_API_KEY="sk-or-your-key"
+finagent --llm-provider open_router --orgs boa
+
+export ANTHROPIC_API_KEY="sk-ant-your-key"
+finagent --llm-provider claude --orgs boa
+```
+
+```powershell
+# Windows PowerShell
+$env:OPENROUTER_API_KEY = "sk-or-your-key"
+$env:ANTHROPIC_API_KEY = "sk-ant-your-key"
 ```
 
 ---

@@ -624,7 +624,15 @@
                   
 
 <h1 id="importing-statements">Importing statements<a class="headerlink" href="#importing-statements" title="Permanent link">&para;</a></h1>
-<p>The <strong>Import</strong> page accepts CSV statement exports from your banks.</p>
+<p>The <strong>Import</strong> page accepts CSV or supported tabular text statement exports
+from your banks.</p>
+<div class="admonition warning">
+<p class="admonition-title">PDF statements are not supported</p>
+</div>
+<p>On your bank's download/export screen, choose <strong>CSV</strong>, <strong>comma-separated</strong>,
+   or a supported tabular text format. Do not download or upload a PDF: a PDF
+   is a visual document, not the transaction table FinAgent needs. Bank of
+   America checking <code>.txt</code> exports are converted to CSV automatically.</p>
 <h2 id="supported-banks">Supported banks<a class="headerlink" href="#supported-banks" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -664,7 +672,8 @@
 </table>
 <h2 id="how-to-import">How to import<a class="headerlink" href="#how-to-import" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Download a CSV export from your bank's website.</li>
+<li>Download a CSV or supported tabular text export from your bank's website —
+   <strong>not a PDF</strong>.</li>
 <li>Drag it onto the Import page (or click to browse). FinAgent detects the
    bank and account type from the file contents and files it into the right
    folder under your statements directory.</li>

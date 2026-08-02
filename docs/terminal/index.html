@@ -688,6 +688,38 @@ finagent<span class="w"> </span>--lookup-method<span class="w"> </span>nominatim
 finagent<span class="w"> </span>--clear-lookup-cache<span class="w">       </span><span class="c1"># wipe the lookup cache</span>
 finagent<span class="w"> </span>--refresh-lookup-cache<span class="w">     </span><span class="c1"># re-resolve every location</span>
 </code></pre></div>
+<p>If no statements are present, a terminal run starts the dashboard and opens
+its <strong>Import</strong> page. Import a CSV or supported tabular text bank export there;
+PDF statements are not supported. The old desktop import window is no longer
+used.</p>
+<p><strong>Cloud API keys from the terminal</strong></p>
+<p>Keys entered in FinAgent Settings or <code>finagent --setup</code> are saved in your
+profile, so you do not need to export them again. If you select a cloud
+provider only with terminal options and have not saved its key, set the
+matching environment variable before starting FinAgent. The pipeline and the
+dashboard server inherit it.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">macOS / Linux</label><label for="__tabbed_1_2">Windows PowerShell</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENROUTER_API_KEY</span><span class="o">=</span><span class="s2">&quot;sk-or-your-key&quot;</span>
+finagent<span class="w"> </span>--llm-provider<span class="w"> </span>open_router<span class="w"> </span>--orgs<span class="w"> </span>boa
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_API_KEY</span><span class="o">=</span><span class="s2">&quot;sk-ant-your-key&quot;</span>
+finagent<span class="w"> </span>--llm-provider<span class="w"> </span>claude<span class="w"> </span>--orgs<span class="w"> </span>boa
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nv">$env:OPENROUTER_API_KEY</span> <span class="p">=</span> <span class="s2">&quot;sk-or-your-key&quot;</span>
+<span class="n">finagent</span> <span class="p">-</span><span class="n">-llm-provider</span> <span class="n">open_router</span> <span class="p">-</span><span class="n">-orgs</span> <span class="n">boa</span>
+
+<span class="nv">$env:ANTHROPIC_API_KEY</span> <span class="p">=</span> <span class="s2">&quot;sk-ant-your-key&quot;</span>
+<span class="n">finagent</span> <span class="p">-</span><span class="n">-llm-provider</span> <span class="n">claude</span> <span class="p">-</span><span class="n">-orgs</span> <span class="n">boa</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>These commands set the key only for the current terminal session. Avoid
+putting API keys directly in commands that may be saved in shell history.</p>
 <h2 id="maintenance">Maintenance<a class="headerlink" href="#maintenance" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>finagent<span class="w"> </span>--overwrite-dashboard-data<span class="w">   </span><span class="c1"># regenerate dashboard data from scratch</span>
 finagent<span class="w"> </span>--delete-dashboard-data<span class="w">      </span><span class="c1"># remove dashboard data (asks first)</span>
