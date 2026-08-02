@@ -30,13 +30,30 @@ All your data stays on your machine.
 
 2. **Open** the `.dmg` and drag **FinAgent** to your Applications folder.
 
-3. **First launch** — open Terminal and run:
+3. **Approve the first launch.** Development builds are not notarized with a
+    paid Apple Developer ID, so macOS may say Apple could not verify that
+    FinAgent is free of malware and offer to move it to the Trash.
+    - Control-click (or right-click) **FinAgent.app** in Applications, choose
+       **Open**, then choose **Open** again.
+    - If it is still blocked, open **System Settings → Privacy & Security**,
+       scroll to Security, click **Open Anyway** beside the FinAgent message,
+       and confirm with your password or Touch ID.
+    - For a release you downloaded from the official FinAgent Releases page and
+       trust, Terminal can remove the downloaded-file quarantine flag:
+       ```bash
+       xattr -dr com.apple.quarantine /Applications/FinAgent.app
+       ```
+    Approval is normally required once per install or update. Ad-hoc signing
+    does not remove this warning for downloaded apps; Apple notarization is the
+    standard way to avoid it and requires a paid Apple Developer account.
+
+4. **First launch** — open Terminal and run:
    ```bash
    /Applications/FinAgent.app/Contents/MacOS/finagent
    ```
    The setup wizard will appear and guide you through configuration.
 
-4. **Subsequent runs** — double-click the app in Finder (dashboard auto-opens)
+5. **Subsequent runs** — double-click the app in Finder (dashboard auto-opens)
    or use the command line with full arguments.
 
 ---
@@ -100,7 +117,7 @@ On first launch the wizard will ask for:
 | **Dashboard port** | Local port for the web dashboard (default `3001`) |
 | **LLM backend** | `ollama` (free, local), `claude` (API key), `open_router` (API key), or `none` |
 | **Location lookup** | `nominatim` (free, recommended) or `google_maps` (better local coverage) |
-| **Contact e-mail** | Required by Nominatim ToS; never sent anywhere else |
+| **Contact e-mail** | Optional contact shared with OpenStreetMap only when enabled |
 
 Settings are saved to `~/.finagent/config.json`.  
 Re-run the wizard at any time with `finagent --reconfigure`.

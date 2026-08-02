@@ -492,6 +492,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#development-restart-helper" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Development restart helper
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -642,6 +653,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#development-restart-helper" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Development restart helper
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -678,9 +700,20 @@ modes. <strong>Personal is the default</strong> and what almost everyone should 
 </ul>
 <h3 id="activating-dev">Activating Dev<a class="headerlink" href="#activating-dev" title="Permanent link">&para;</a></h3>
 <p>Flip the toggle to <strong>Dev</strong> on the Settings page and enter the password
-(<code>finagent</code>). The choice is stored in your config as <code>ui_profile</code> and
-persists across restarts. Switch back to Personal at any time — no password
-needed.</p>
+(<code>finagent</code>). FinAgent then loads the Dev configuration into the Settings
+form and shows its config-file path. This is only a preview until you press
+<strong>Save changes</strong>:</p>
+<ul>
+<li><strong>Save changes</strong> writes the displayed profile's settings and makes that
+  profile active across the dashboard and subsequent Process runs.</li>
+<li><strong>Discard</strong> returns to the currently active profile without changing its
+  configuration.</li>
+<li>Switching back to Personal does not require a password, but it still waits
+  for <strong>Save changes</strong> before activation.</li>
+</ul>
+<p>Personal normally uses <code>~/.finagent/config.json</code>; Dev normally uses
+<code>~/.finagent-dev/config.json</code>. Each file retains its own folders, provider,
+API keys, and processing settings.</p>
 <h2 id="terminal-config-profiles">Terminal config profiles<a class="headerlink" href="#terminal-config-profiles" title="Permanent link">&para;</a></h2>
 <p>From the terminal, keep to the same two supported profiles used by the
 dashboard:</p>
@@ -689,6 +722,17 @@ finagent<span class="w"> </span>--profile<span class="w"> </span>dev
 </code></pre></div>
 <p>Each profile keeps its own folders, provider, and settings. See
 <a href="../terminal/">Running from the terminal</a>.</p>
+<p>The profile supplied at launch is initially active. Running <code>finagent</code>
+without <code>--profile</code> starts Personal; use <code>--profile dev</code> when Dev should be
+active immediately.</p>
+<h2 id="development-restart-helper">Development restart helper<a class="headerlink" href="#development-restart-helper" title="Permanent link">&para;</a></h2>
+<p>When <code>dashboard/restart-server.sh</code> starts with <code>--profile</code> and
+<code>--config-dir</code>, that custom config directory remains associated with the
+starting profile. Settings edits that exact file while the profile is
+selected. The other profile continues to use its normal config path.</p>
+<p>An explicit <code>--data-dir</code> is a pinned development override and remains in use
+when profiles change. Without that override, activating a profile also changes
+the dashboard data and statements paths to those in the selected config.</p>
 
 
 

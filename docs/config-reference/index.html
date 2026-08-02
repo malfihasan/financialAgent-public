@@ -602,10 +602,11 @@
                   
 
 <h1 id="configuration-reference">Configuration reference<a class="headerlink" href="#configuration-reference" title="Permanent link">&para;</a></h1>
-<p>FinAgent's config lives at <code>~/.finagent/config.json</code> (override the directory
-with the <code>FINAGENT_CONFIG_DIR</code> environment variable). Edit it through the
-dashboard's Settings page, the terminal wizard (<code>finagent --setup</code>), or by
-hand.</p>
+<p>Personal config lives at <code>~/.finagent/config.json</code> and Dev config normally
+lives at <code>~/.finagent-dev/config.json</code>. Override the active directory with
+the <code>FINAGENT_CONFIG_DIR</code> environment variable. Edit the selected profile
+through the dashboard's Settings page, the terminal wizard
+(<code>finagent --setup</code>), or by hand.</p>
 <h2 id="keys">Keys<a class="headerlink" href="#keys" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -674,12 +675,12 @@ hand.</p>
 <tr>
 <td><code>dashboard_port</code></td>
 <td>number</td>
-<td>Default <code>3000</code>. Docs are served on port + 2.</td>
+<td>Default <code>3001</code>. Docs are served on port + 2.</td>
 </tr>
 <tr>
 <td><code>ui_profile</code></td>
 <td><code>personal</code> · <code>dev</code></td>
-<td>Dashboard profile (<a href="../profiles/">details</a>).</td>
+<td>Profile recorded in this config (<a href="../profiles/">details</a>).</td>
 </tr>
 <tr>
 <td><code>setup_complete</code></td>

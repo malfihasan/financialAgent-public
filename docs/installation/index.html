@@ -812,29 +812,40 @@ Pick your platform below.</p>
    your <code>PATH</code>. Install the LTS release either way:</p>
 <ul>
 <li>Download the macOS installer from <a href="https://nodejs.org/">nodejs.org</a> and
-  run it, <strong>or</strong></li>
+   run it, <strong>or</strong></li>
 <li>With <a href="https://brew.sh">Homebrew</a>: <code>brew install node</code></li>
 </ul>
 <p>Verify it in a new Terminal window: <code>node --version</code> (v18 or newer; v20 LTS
-recommended).
-2. <strong>Download</strong> the latest <code>FinAgent-&lt;version&gt;-macOS.dmg</code> from the
-   <a href="https://github.com/malfihasan/financialAgent-public/releases">GitHub releases page</a>.
-3. <strong>Install:</strong> open the DMG and drag <strong>FinAgent.app</strong> into <code>Applications</code>.
-4. <strong>First launch — approve the security check.</strong> The app is not distributed
-   through the App Store, so macOS Gatekeeper blocks a normal double-click
-   the first time:
-- Right-click (or Control-click) <strong>FinAgent.app</strong> → <strong>Open</strong> → <strong>Open</strong>.
-- If macOS still refuses ("Apple could not verify…"), go to
-  <strong>System Settings → Privacy &amp; Security</strong>, scroll to the Security
-  section, and click <strong>"Open Anyway"</strong> next to the FinAgent message,
-  then confirm with your password or Touch ID.
-- Terminal alternative (removes the quarantine flag in one step):</p>
-<div class="highlight"><pre><span></span><code>```bash
-xattr -dr com.apple.quarantine /Applications/FinAgent.app
-```
-</code></pre></div>
-<p>This approval is needed <strong>once per install/update</strong>.
-5. <strong>Launch.</strong> Double-clicking FinAgent.app opens a Terminal window, starts the
+recommended).</p>
+</li>
+<li>
+<p><strong>Download</strong> the latest <code>FinAgent-&lt;version&gt;-macOS.dmg</code> from the
+   <a href="https://github.com/malfihasan/financialAgent-public/releases">GitHub releases page</a>.</p>
+</li>
+<li>
+<p><strong>Install:</strong> open the DMG and drag <strong>FinAgent.app</strong> into <code>Applications</code>.</p>
+</li>
+<li>
+<p><strong>First launch — approve the security check.</strong> Development builds are not
+   notarized with a paid Apple Developer ID, so macOS Gatekeeper may say Apple
+   could not verify that FinAgent is free of malware and offer to move it to
+   the Trash. Approval is needed <strong>once per install/update</strong>. Ad-hoc signing
+   does not remove the warning for downloaded apps; avoiding it requires Apple
+   notarization and a paid Apple Developer account. Use one of these approval
+   methods:</p>
+<ul>
+<li>Right-click (or Control-click) <strong>FinAgent.app</strong> → <strong>Open</strong> → <strong>Open</strong>.</li>
+<li>If macOS still refuses ("Apple could not verify…"), go to
+   <strong>System Settings → Privacy &amp; Security</strong>, scroll to the Security
+   section, and click <strong>"Open Anyway"</strong> next to the FinAgent message,
+   then confirm with your password or Touch ID.</li>
+<li>For a release downloaded from the official FinAgent Releases page that
+   you trust, Terminal can remove the quarantine flag with
+   <code>xattr -dr com.apple.quarantine /Applications/FinAgent.app</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Launch.</strong> Double-clicking FinAgent.app opens a Terminal window, starts the
    app, and opens your browser on the dashboard. First run walks you through
    <a href="../setup/">setup</a>.</p>
 </li>
