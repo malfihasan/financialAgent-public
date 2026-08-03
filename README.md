@@ -6,7 +6,7 @@
 
 **🔐 Privacy-first personal finance automation, local by default.**
 
-[![Latest Release](https://img.shields.io/badge/Latest%20Release-v1.0.5-brightgreen?style=flat-square)](https://github.com/malfihasan/financialAgent-public/releases/latest)
+[![Latest Release](https://img.shields.io/badge/Latest%20Release-v1.0.6-brightgreen?style=flat-square)](https://github.com/malfihasan/financialAgent-public/releases/latest)
 [![License: Personal Use](https://img.shields.io/badge/license-Personal%20Use-blue?style=flat-square)](LICENSE)
 [![Platforms](https://img.shields.io/badge/platform-macOS%20%7C%20Linux%20%7C%20Windows-lightgrey?style=flat-square)](https://github.com/malfihasan/financialAgent-public/releases/latest)
 
