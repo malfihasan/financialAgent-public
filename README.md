@@ -24,7 +24,8 @@ Full installation, setup, terminal, and configuration guides are available onlin
 
 ## 🚀 Installation
 
-FinAgent is available for macOS, Linux, and Windows. Choose your platform:
+FinAgent is available for macOS, Linux, Windows, and Docker. Choose your
+platform:
 
 ### 🍎 macOS
 
@@ -74,7 +75,7 @@ invoked — from a shell it runs inline (all
 [terminal flags](https://malfihasan.github.io/financialAgent-public/docs/terminal/)
 work as expected); from Finder it opens Terminal.app for you.
 
-> See the full [macOS installation guide](https://malfihasan.github.io/financialAgent-public/docs/installation/#macos-quick-start)
+> See the full [macOS installation guide](https://malfihasan.github.io/financialAgent-public/docs/installation/#macos-installation)
 > for more detail.
 
 ### 🐧 Linux (x86_64)
@@ -88,37 +89,83 @@ work as expected); from Finder it opens Terminal.app for you.
    cd finagent_bundle
    ```
 
-3. **Run the setup wizard** (first time only):
+3. **Install** (recommended — no sudo needed, adds a `finagent` command and an
+   app menu entry):
    ```bash
-   ./finagent --setup
+   ./install.sh
+   ```
+   Or run it in place without installing: `./finagent --setup`.
+
+4. **Run the setup wizard** (first time only):
+   ```bash
+   finagent --setup
    ```
 
-4. **Process your statements**:
+5. **Process your statements**:
    ```bash
-   ./finagent --orgs boa,amex,chase
+   finagent --orgs boa,amex,chase
    ```
 
 ### 🪟 Windows
 
-1. **Install [Node.js](https://nodejs.org/) 18+ (20 LTS recommended)** — required
-   to run the web dashboard. Download the Windows installer from
-   [nodejs.org](https://nodejs.org/), run it, and accept the defaults. Verify
-   it worked by opening a new Command Prompt and running `node --version`.
+1. **Download** the latest
+   [FinAgent-Windows-x64.exe](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Windows-x64.exe).
+2. **Run the installer.** It includes the dashboard runtime; no separate Python
+   or Node.js installation is required.
+3. Leave **Launch FinAgent** selected to open first-run setup, then use the
+   Start Menu or optional desktop shortcut for later launches.
 
-2. **Download** the latest Windows archive:
-   [FinAgent-Windows-x64.zip](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Windows-x64.zip).
+See the [Windows installation guide](INSTALL.md#windows) for SmartScreen and
+installer troubleshooting.
 
-3. **Extract** the zip to a folder of your choice (e.g. `C:\FinAgent`).
+### 🐳 Docker
 
-4. **Run the setup wizard** (first time only):
-   ```
-   FinAgent.bat --setup
+Every release includes a Docker image containing the packaged executable,
+dashboard, documentation, Node.js runtime, and Ollama. The private source tree
+and raw Python files are not published in the image.
+
+Install Docker Desktop, or Docker Engine with Docker Compose, before continuing.
+
+1. **Download** `FinAgent-Docker-x86_64.tar.gz`, `docker_up.sh`, and
+   `docker-compose.yml` from the
+   [latest release](https://github.com/malfihasan/financialAgent-public/releases/latest).
+
+2. **Load the image** and make the launcher executable:
+   ```bash
+   docker load -i FinAgent-Docker-x86_64.tar.gz
+   chmod +x docker_up.sh
    ```
 
-5. **Process your statements**:
+3. **Start FinAgent.** This basic command skips the optional model download;
+   you can select a provider later in Settings:
+   ```bash
+   ./docker_up.sh \
+     --statements "$HOME/Documents/FinAgent/statements" \
+     --processing "$HOME/Documents/FinAgent/processing" \
+     --port 3001 \
+     --docs-port 3003 \
+     --no-ollama-model
    ```
-   FinAgent.bat --orgs boa,amex,chase
-   ```
+
+4. **Open FinAgent:**
+   - Dashboard: [http://localhost:3001](http://localhost:3001)
+   - Documentation: [http://localhost:3003](http://localhost:3003)
+
+Both ports are validated before Docker starts. `--docs-port` can select a
+different host port, while omitting it uses the dashboard port plus 2.
+
+To use the included Ollama service, replace `--no-ollama-model` with
+`--ollama-model` to download the small `qwen2.5:0.5b` model into a persistent
+Docker volume. Claude and OpenRouter keys can be injected from a local mode-600
+env file. See [Quick start](docs/quick-start/#docker) for the shortest
+copy-paste command. The [detailed Docker installation](docs/installation/#docker-installation)
+covers provider commands, custom models, persistence, updates, and
+troubleshooting; [INSTALL.md](INSTALL.md#docker) includes release verification
+and cleanup checks.
+
+The statements, processing, and config folders are mounted from the host and
+locked in Docker Settings. This ensures the dashboard and processing pipeline
+always use the same persistent folders.
 
 ### ⚙️ First-Run Setup Wizard
 
@@ -134,8 +181,14 @@ On first launch the wizard will ask for:
 | **Location lookup** | `nominatim` (free, recommended) or `google_maps` (better local coverage) |
 | **Contact e-mail** | Optional contact shared with OpenStreetMap only when enabled |
 
-Settings are saved to `~/.finagent/config.json`.
-Re-run the wizard at any time with `finagent --reconfigure`.
+For native installs, settings are saved to `~/.finagent/config.json`; re-run
+the wizard at any time with `finagent --reconfigure`.
+
+> **Docker:** the statements folder, processing folder, and ports come from
+> `docker_up.sh` and remain locked in Settings. Other settings persist in the
+> host config mount (the `.docker-config` folder by default). Complete or edit
+> those fields in the dashboard. To change a mount or published port, stop the
+> container and run `docker_up.sh` again with the new option.
 
 ## 📁 Adding Bank Statements
 
@@ -281,9 +334,9 @@ first-run setup, terminal utilities, profile management, and a configuration
 reference. You can also access the documentation online:
 
 - **Online Documentation**: [https://malfihasan.github.io/financialAgent-public/docs/](https://malfihasan.github.io/financialAgent-public/docs/)
-- **Local Dashboard**: Once FinAgent is running, open
-  `http://localhost:<dashboard port + 2>` (port `3002` by default), or use the
-documentation links inside the dashboard's Settings page and footer.
+- **Local Documentation**: Once FinAgent is running, open
+   `http://localhost:<dashboard port + 2>` (port `3003` by default), or use the
+   documentation links inside the dashboard's Settings page and footer.
 
 ## 💬 Support
 

@@ -12,12 +12,12 @@ All your data stays on your machine.
 | OS | macOS 11, Ubuntu 20.04, Windows 10 | macOS 14, Ubuntu 22.04, Windows 11 |
 | RAM | 4 GB | 8 GB+ |
 | Disk | 500 MB free | 2 GB+ (for LLM model cache) |
-| Node.js | 18+ | 20 LTS |
-| Python | 3.11 (bundled) | — |
+| Node.js | Linux: 18+; macOS/Windows: bundled | Linux: 20 LTS |
+| Python | Bundled | — |
 
-> **Note** — Python is bundled in the macOS `.dmg` and Linux `.tar.gz` releases.
-> Node.js must be installed separately for the web dashboard.
-> Install from [nodejs.org](https://nodejs.org/).
+> **Note** — Linux users install Node.js separately for the dashboard. macOS
+> and Windows releases include the dashboard runtime. Docker includes all
+> application runtimes and Ollama.
 
 ---
 
@@ -69,39 +69,147 @@ All your data stays on your machine.
    cd finagent_bundle
    ```
 
-3. **Run the setup wizard** (first time only):
+3. **Install** (recommended, no sudo needed) — copies the app to
+   `~/.local/share/FinAgent`, links a `finagent` command into `~/.local/bin`,
+   and adds an application-menu entry:
    ```bash
-   ./finagent --setup
+   ./install.sh
+   ```
+   Prefer to run it in place instead? Skip this step and use `./finagent`
+   from the extracted folder. Uninstall later with `./install.sh --uninstall`.
+
+4. **Run the setup wizard** (first time only):
+   ```bash
+   finagent --setup
    ```
 
-4. **Process your statements**:
+5. **Process your statements**:
    ```bash
-   ./finagent --orgs boa,amex,chase
+   finagent --orgs boa,amex,chase
    ```
+
+---
+
+## Docker
+
+The Docker release image contains the packaged Linux executable, dashboard
+assets, and required runtime data. It does not include the private source tree
+or raw Python source files. Statement, processing, and config folders are
+bind-mounted from the host and locked to those mounts for the container's
+lifetime; Settings shows a "Docker locked" badge and hides the folder pickers.
+
+1. **Download the image and launcher files**:
+   ```bash
+   curl -LO https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Docker-x86_64.tar.gz
+   curl -LO https://github.com/malfihasan/financialAgent-public/releases/latest/download/docker_up.sh
+   curl -LO https://github.com/malfihasan/financialAgent-public/releases/latest/download/docker-compose.yml
+   ```
+
+2. **Load the image** and make the launcher executable:
+   ```bash
+   docker load -i FinAgent-Docker-x86_64.tar.gz
+   chmod +x docker_up.sh
+   ```
+
+3. **Preview the mounts and ports** without starting a container:
+   ```bash
+   ./docker_up.sh \
+     --statements ~/Documents/FinAgent/statements \
+     --processing ~/Documents/FinAgent/processing \
+     --port 3001 \
+   --docs-port 3003 \
+   --no-ollama-model \
+     --dry-run
+   ```
+
+4. **Start it**. Keep `docker_up.sh` and `docker-compose.yml` in the same
+   directory:
+   ```bash
+   ./docker_up.sh \
+     --statements ~/Documents/FinAgent/statements \
+     --processing ~/Documents/FinAgent/processing \
+       --port 3001 \
+       --docs-port 3003
+   ```
+    The launcher rejects malformed, privileged, conflicting, or out-of-range
+    ports before it invokes Docker. If `--docs-port` is omitted, documentation
+    uses the dashboard port plus 2.
+
+    Ollama is already installed in the image. In an interactive terminal the
+    launcher asks whether to download `qwen2.5:0.5b`; use `--ollama-model`
+    (optionally followed by another model name) or `--no-ollama-model` for
+    non-interactive runs. Downloaded models persist in the `ollama-data` Docker
+   volume. An explicit model selection becomes the active model shown in
+   Settings for that launch, even when the mounted config contains an older
+   model. Without an explicit choice, an existing Settings selection is
+   preserved; a fresh config starts with provider `none` and downloads no
+   model.
+
+    For Claude or OpenRouter, no provider CLI installation is needed because
+    FinAgent calls their HTTPS APIs directly. Keep the key out of shell history:
+    ```bash
+    printf '%s\n' 'ANTHROPIC_API_KEY=your-key' > ~/.config/finagent/docker.env
+    chmod 600 ~/.config/finagent/docker.env
+    ./docker_up.sh --llm-provider claude --env-file ~/.config/finagent/docker.env \
+       --statements ~/Documents/FinAgent/statements \
+       --processing ~/Documents/FinAgent/processing
+    ```
+    For OpenRouter, use `OPENROUTER_API_KEY=...` and
+    `--llm-provider open_router`. The key is injected at runtime, masked in the
+    dashboard, and is not copied into the image. Providers can still be changed
+    later in Settings.
+
+5. **Verify the service**:
+   ```bash
+   docker ps --filter name=finagent
+   docker logs finagent
+   curl http://localhost:3001/api/config
+   ```
+   Open `http://localhost:3001` and documentation at
+   `http://localhost:3003`. The API response should report Docker mode,
+   `/data/statements`, and `/data/processing`. Import a small supported bank
+   statement, run processing from the dashboard, and confirm output appears in
+   the host processing folder.
+
+6. **Restart and verify persistence**:
+   ```bash
+   docker restart finagent
+   curl http://localhost:3001/api/config
+   ```
+   Configuration and imported data should remain because all three data
+   directories are host mounts.
+
+7. **Stop and remove the container** from the launcher directory:
+   ```bash
+   docker compose --project-name finagent down
+   ```
+
+The versioned `FinAgent-<version>-Docker-x86_64.tar.gz` image is the Docker
+artifact. `FinAgent-Docker-x86_64.tar.gz` is its stable latest-download alias.
+The release also includes `docker_up.sh` and `docker-compose.yml`; these are
+launcher assets, not another application image. The published image is x86_64.
+Apple Silicon Docker Desktop can run it through emulation; native ARM Linux
+requires a separately built ARM64 image.
 
 ---
 
 ## Windows
 
-1. **Install [Node.js](https://nodejs.org/) 18+ (20 LTS recommended)** — required
-   to run the web dashboard. Download the Windows installer from
-   [nodejs.org](https://nodejs.org/), run it, and accept the defaults. Verify
-   it worked by opening a new Command Prompt and running `node --version`.
+1. **Download** the latest Windows installer:
+   [FinAgent-Windows-x64.exe](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Windows-x64.exe).
 
-2. **Download** the latest Windows archive:
-   [FinAgent-Windows-x64.zip](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Windows-x64.zip).
+2. **Run the installer.** It includes the dashboard runtime and creates Start
+   Menu shortcuts; a desktop shortcut is optional. No separate Python or
+   Node.js installation is required.
 
-3. **Extract** the zip to a folder of your choice (e.g. `C:\FinAgent`).
+3. If SmartScreen appears, click **More info → Run anyway**.
 
-4. **Run the setup wizard** (first time only):
-   ```
-   FinAgent.bat --setup
-   ```
+4. Leave **Launch FinAgent** selected on the final page. Your browser opens to
+   first-run setup. Later, use the Start Menu or desktop shortcut.
 
-5. **Process your statements**:
-   ```
-   FinAgent.bat --orgs boa,amex,chase
-   ```
+If installation fails unexpectedly, FinAgent creates a short, non-secret
+diagnostic in the Windows temporary folder and opens a pre-filled GitHub issue
+for your review. Attach the installer log only if a maintainer requests it.
 
 ---
 

@@ -1,0 +1,32 @@
+services:
+  finagent:
+    image: ${FINAGENT_IMAGE:-finagent:release}
+    container_name: finagent
+    restart: unless-stopped
+    environment:
+      FINAGENT_DOCKER: "1"
+      FINAGENT_PROFILE: ${FINAGENT_PROFILE:-personal}
+      FINAGENT_CONFIG_DIR: /config
+      FINAGENT_STATEMENTS_DIR: /data/statements
+      FINAGENT_PROCESSING_DIR: /data/processing
+      DASHBOARD_PORT: ${DASHBOARD_PORT:-3001}
+      FINAGENT_LLM_PROVIDER: ${FINAGENT_LLM_PROVIDER:-none}
+      FINAGENT_OLLAMA_MODEL: ${FINAGENT_OLLAMA_MODEL:-}
+      FINAGENT_LLM_PROVIDER_OVERRIDE: ${FINAGENT_LLM_PROVIDER_OVERRIDE:-false}
+      FINAGENT_OLLAMA_MODEL_OVERRIDE: ${FINAGENT_OLLAMA_MODEL_OVERRIDE:-false}
+      OLLAMA_MODEL_NAME: ${FINAGENT_OLLAMA_MODEL:-}
+      OLLAMA_API_URL: http://127.0.0.1:11434
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+    ports:
+      - "127.0.0.1:${DASHBOARD_PORT:-3001}:${DASHBOARD_PORT:-3001}"
+      - "127.0.0.1:${DOCS_PORT:-3003}:${FINAGENT_INTERNAL_DOCS_PORT:-3003}"
+    volumes:
+      - ${STATEMENTS_PATH}:/data/statements:rw
+      - ${PROCESSING_PATH}:/data/processing:rw
+      - ${CONFIG_PATH}:/config:rw
+      - ollama-data:/root/.ollama
+    command: []
+
+volumes:
+  ollama-data:

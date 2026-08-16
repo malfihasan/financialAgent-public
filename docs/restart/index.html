@@ -228,6 +228,32 @@
   
   
     <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Quick start
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../installation/" class="md-nav__link">
         
   
@@ -439,6 +465,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#if-you-launched-with-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If you launched with Docker
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -598,6 +635,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#if-you-launched-with-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        If you launched with Docker
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -640,6 +688,17 @@ Ctrl-C
 <span class="c1"># start again (skip reprocessing)</span>
 finagent<span class="w"> </span>--dashboard-only
 </code></pre></div>
+<h2 id="if-you-launched-with-docker">If you launched with Docker<a class="headerlink" href="#if-you-launched-with-docker" title="Permanent link">&para;</a></h2>
+<p>Restart the existing container without changing its mounted data or settings:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>restart<span class="w"> </span>finagent
+</code></pre></div>
+<p>To remove and recreate the container, run this from the folder containing
+<code>docker-compose.yml</code>, then repeat your normal <code>./docker_up.sh</code> command:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>--project-name<span class="w"> </span>finagent<span class="w"> </span>down
+</code></pre></div>
+<p>Statements, processing output, config, and downloaded Ollama models persist.
+See <a href="../installation/#docker-installation">Docker installation</a> for ports,
+providers, updates, and complete launcher examples.</p>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
