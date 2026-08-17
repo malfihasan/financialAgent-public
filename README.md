@@ -17,6 +17,25 @@ and financial trends without requiring bank credentials or a hosted FinAgent acc
 Statement files, rules, configuration, and processed results remain in folders you
 control on your computer.
 
+## Dashboard Preview
+
+<table>
+   <tr>
+      <td align="center" width="33%">
+         <a href="assets/dashboard-overview.png"><img src="assets/dashboard-overview.png" alt="FinAgent overview dashboard" width="100%"></a>
+         <br><sub><b>Overview</b></sub>
+      </td>
+      <td align="center" width="33%">
+         <a href="assets/dashboard-monthly.png"><img src="assets/dashboard-monthly.png" alt="FinAgent monthly dashboard" width="100%"></a>
+         <br><sub><b>Monthly trends</b></sub>
+      </td>
+      <td align="center" width="33%">
+         <a href="assets/dashboard-transactions.png"><img src="assets/dashboard-transactions.png" alt="FinAgent transactions dashboard" width="100%"></a>
+         <br><sub><b>Transactions</b></sub>
+      </td>
+   </tr>
+</table>
+
 ## 📚 Documentation
 
 Full installation, setup, terminal, and configuration guides are available online:
@@ -28,6 +47,12 @@ FinAgent is available for macOS, Linux, Windows, and Docker. Choose your
 platform:
 
 ### 🍎 macOS
+
+<p align="center">
+   <img src="docs/tutorial_dmg_install.gif" alt="macOS installation quick start: download FinAgent from the GitHub releases page" width="800">
+</p>
+
+<p align="center"><em>macOS installation quick start: download the latest release and begin setup.</em></p>
 
 1. **Download** the latest `FinAgent-<version>-macOS.dmg` from the
    [GitHub releases page](https://github.com/malfihasan/financialAgent-public/releases/latest).
