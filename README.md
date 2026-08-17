@@ -146,10 +146,15 @@ installer troubleshooting.
 ### 🐳 Docker
 
 Every release includes a Docker image containing the packaged executable,
-dashboard, documentation, Node.js runtime, and Ollama. The private source tree
-and raw Python files are not published in the image.
+dashboard, documentation, Node.js runtime, and Ollama. 
 
 Install Docker Desktop, or Docker Engine with Docker Compose, before continuing.
+
+<p align="center">
+   <img src="docs/tutorial_docker_install.gif" alt="Docker installation quick start: download the release files and start FinAgent" width="800">
+</p>
+
+<p align="center"><em>Docker installation quick start: download the release files and start FinAgent.</em></p>
 
 1. **Download** `FinAgent-Docker-x86_64.tar.gz`, `docker_up.sh`, and
    `docker-compose.yml` from the
@@ -181,8 +186,7 @@ different host port, while omitting it uses the dashboard port plus 2.
 
 To use the included Ollama service, replace `--no-ollama-model` with
 `--ollama-model` to download the small `qwen2.5:0.5b` model into a persistent
-Docker volume. Claude and OpenRouter keys can be injected from a local mode-600
-env file. See [Quick start](docs/quick-start/#docker) for the shortest
+Docker volume. Claude and OpenRouter keys can also be stored in a local .env file that is locked to 600 permissions. See [Quick start](docs/quick-start/#docker) for the shortest
 copy-paste command. The [detailed Docker installation](docs/installation/#docker-installation)
 covers provider commands, custom models, persistence, updates, and
 troubleshooting; [INSTALL.md](INSTALL.md#docker) includes release verification
@@ -203,8 +207,7 @@ On first launch the wizard will ask for:
 | **Processing folder** | Where FinAgent writes output files (e.g. `~/Documents/FinAgent/processing`) |
 | **Dashboard port** | Local port for the web dashboard (default `3001`) |
 | **LLM backend** | `ollama` (free, local), `claude` (API key), `open_router` (API key), or `none` |
-| **Location lookup** | `nominatim` (free, recommended) or `google_maps` (better local coverage) |
-| **Contact e-mail** | Optional contact shared with OpenStreetMap only when enabled |
+| **Location lookup** | `nominatim` (OpenStreetMap : free, recommended) or `google_maps` (better local coverage - WIP) |
 
 For native installs, settings are saved to `~/.finagent/config.json`; re-run
 the wizard at any time with `finagent --reconfigure`.
