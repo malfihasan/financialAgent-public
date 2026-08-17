@@ -17,6 +17,20 @@ and financial trends without requiring bank credentials or a hosted FinAgent acc
 Statement files, rules, configuration, and processed results remain in folders you
 control on your computer.
 
+## ✨ What It Does
+
+- 🏦 Imports and normalizes statement files from Bank of America, American Express,
+  Chase, Citi, and U.S. Bank.
+- 🧠 Categorizes transactions with editable rules, optional merchant/location lookup,
+  and optional Ollama, Claude, or OpenRouter assistance.
+- 🗂️ Maintains one persistent transaction master while preserving categories edited
+  from the dashboard.
+- 📅 Supports inclusive date-range views without deleting older transaction history.
+- 📊 Provides a local dashboard for totals, trends, category analysis, transaction
+  review, budgets, and rule management.
+- 🗄️ Keeps monthly budget archives and asks before replacing an existing archive.
+- 💻 Runs with a guided setup and statement-import workflow on macOS, Linux, and Windows.
+
 ## Dashboard Preview
 
 <table>
@@ -325,20 +339,6 @@ pull your chosen model: `ollama pull qwen2.5:3b`.
 `lsof -i :3001`. Change the port with `finagent --reconfigure`.
 
 **Re-run setup** — `finagent --reconfigure` or `python setup_wizard.py --reconfigure`.
-
-## ✨ What It Does
-
-- 🏦 Imports and normalizes statement files from Bank of America, American Express,
-  Chase, Citi, and U.S. Bank.
-- 🧠 Categorizes transactions with editable rules, optional merchant/location lookup,
-  and optional Ollama, Claude, or OpenRouter assistance.
-- 🗂️ Maintains one persistent transaction master while preserving categories edited
-  from the dashboard.
-- 📅 Supports inclusive date-range views without deleting older transaction history.
-- 📊 Provides a local dashboard for totals, trends, category analysis, transaction
-  review, budgets, and rule management.
-- 🗄️ Keeps monthly budget archives and asks before replacing an existing archive.
-- 💻 Runs with a guided setup and statement-import workflow on macOS, Linux, and Windows.
 
 ## 🔒 Privacy
 
