@@ -376,6 +376,7 @@ Never attach account numbers, credentials, API keys, or unredacted financial dat
 FinAgent is free for personal use. You can also support the developer:
 
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=000000)](https://www.buymeacoffee.com/alfi_hasan)
+[![Ko-fi](https://img.shields.io/badge/Support%20on%20Ko--fi-FF5E5B?style=for-the-badge&logo=kofi&logoColor=white)](https://ko-fi.com/alfihasan)
 
 ## ⚖️ License
 
