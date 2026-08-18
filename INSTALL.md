@@ -100,14 +100,14 @@ lifetime; Settings shows a "Docker locked" badge and hides the folder pickers.
 
 1. **Download the image and launcher files**:
    ```bash
-   curl -LO https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Docker-x86_64.tar.gz
-   curl -LO https://github.com/malfihasan/financialAgent-public/releases/latest/download/docker_up.sh
-   curl -LO https://github.com/malfihasan/financialAgent-public/releases/latest/download/docker-compose.yml
+   curl -LO https://github.com/malfihasan/financialAgent-public/releases/download/v1.0.11/FinAgent-1.0.11-Docker-x86_64.tar.gz
+   curl -LO https://github.com/malfihasan/financialAgent-public/releases/download/v1.0.11/docker_up.sh
+   curl -LO https://github.com/malfihasan/financialAgent-public/releases/download/v1.0.11/docker-compose.yml
    ```
 
 2. **Load the image** and make the launcher executable:
    ```bash
-   docker load -i FinAgent-Docker-x86_64.tar.gz
+   docker load -i FinAgent-1.0.11-Docker-x86_64.tar.gz
    chmod +x docker_up.sh
    ```
 
