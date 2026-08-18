@@ -43,7 +43,7 @@ jobs:
           echo "private_repo=${PRIVATE_REPO}" >> "$GITHUB_OUTPUT"
           echo "Publishing v${VERSION} from ${PRIVATE_REPO}"
 
-      - name: Update README release badge
+      - name: Update public release metadata
         env:
           VERSION: ${{ steps.vars.outputs.version }}
         run: |
@@ -53,13 +53,14 @@ jobs:
           import re
           from pathlib import Path
 
-          path = Path("README.md")
+          readme_path = Path("README.md")
+          install_path = Path("INSTALL.md")
           version = os.environ["VERSION"]
           badge = (
               f"[![Latest Release](https://img.shields.io/badge/Latest%20Release-v{version}-brightgreen?style=flat-square)]"
               "(https://github.com/malfihasan/financialAgent-public/releases/latest)"
           )
-          text = path.read_text(encoding="utf-8")
+          text = readme_path.read_text(encoding="utf-8")
           pattern = re.compile(
               r"^\[!\[Latest Release\]\([^\n]+\)\]"
               r"\(https://github\.com/malfihasan/financialAgent-public/releases/latest\)$",
@@ -68,17 +69,32 @@ jobs:
           updated, count = pattern.subn(badge, text, count=1)
           if count != 1:
               raise SystemExit("Could not find README Latest Release badge line")
-          path.write_text(updated, encoding="utf-8")
+          readme_path.write_text(updated, encoding="utf-8")
+
+          install_text = install_path.read_text(encoding="utf-8")
+          release_base = "https://github.com/malfihasan/financialAgent-public/releases"
+          install_text = re.sub(
+              rf"{re.escape(release_base)}/(?:latest/download|download/v[^/]+)/"
+              r"(?:FinAgent-)?(?:[0-9]+\.[0-9]+\.[0-9]+-)?Docker-x86_64\.tar\.gz",
+              f"{release_base}/download/v{version}/FinAgent-{version}-Docker-x86_64.tar.gz",
+              install_text,
+          )
+          install_text = re.sub(
+              rf"{re.escape(release_base)}/(?:latest/download|download/v[^/]+)/(docker_up\.sh|docker-compose\.yml)",
+              rf"{release_base}/download/v{version}/\1",
+              install_text,
+          )
+          install_path.write_text(install_text, encoding="utf-8")
           PY
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet README.md; then
-            git add README.md
-            git commit -m "docs: update release badge for v${VERSION}"
+          if ! git diff --quiet README.md INSTALL.md; then
+            git add README.md INSTALL.md
+            git commit -m "docs: update release metadata for v${VERSION}"
             git push
           else
-            echo "README badge already up to date."
+            echo "Release metadata already up to date."
           fi
 
       - name: Download release assets from private repo
@@ -92,6 +108,14 @@ jobs:
             --repo "${PRIVATE_REPO}" \
             --dir release-assets \
             --pattern "FinAgent-*"
+          gh release download "v${VERSION}" \
+            --repo "${PRIVATE_REPO}" \
+            --dir release-assets \
+            --pattern "docker_up.sh"
+          gh release download "v${VERSION}" \
+            --repo "${PRIVATE_REPO}" \
+            --dir release-assets \
+            --pattern "docker-compose.yml"
           echo "Downloaded assets:"
           ls -lh release-assets/
 
@@ -103,6 +127,7 @@ jobs:
           cp "release-assets/FinAgent-${VERSION}-macOS.dmg" "release-assets/FinAgent-macOS.dmg"
           cp "release-assets/FinAgent-${VERSION}-Linux-x86_64.tar.gz" "release-assets/FinAgent-Linux-x86_64.tar.gz"
           cp "release-assets/FinAgent-${VERSION}-Windows-x64.exe" "release-assets/FinAgent-Windows-x64.exe"
+          cp "release-assets/FinAgent-${VERSION}-Docker-x86_64.tar.gz" "release-assets/FinAgent-Docker-x86_64.tar.gz"
           echo "Release assets with stable aliases:"
           ls -lh release-assets/
 
