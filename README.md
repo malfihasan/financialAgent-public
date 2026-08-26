@@ -60,6 +60,11 @@ Full installation, setup, terminal, and configuration guides are available onlin
 FinAgent is available for macOS, Linux, Windows, and Docker. Choose your
 platform:
 
+> Every release uses the same filenames (e.g. `FinAgent-macOS.dmg`) — the
+> version lives in the release's git tag. To get an older version, open the
+> [Releases page](https://github.com/malfihasan/financialAgent-public/releases)
+> and download from that specific tag instead of "latest".
+
 ### 🍎 macOS
 
 <p align="center">
@@ -170,9 +175,11 @@ Install Docker Desktop, or Docker Engine with Docker Compose, before continuing.
 
 <p align="center"><em>Docker installation quick start: download the release files and start FinAgent.</em></p>
 
-1. **Download** `FinAgent-Docker-x86_64.tar.gz`, `docker_up.sh`, and
-   `docker-compose.yml` from the
-   [latest release](https://github.com/malfihasan/financialAgent-public/releases/latest).
+1. **Download** `FinAgent-Docker-x86_64.tar.gz` from the
+   [latest release](https://github.com/malfihasan/financialAgent-public/releases/latest),
+   plus [`docker_up.sh`](https://raw.githubusercontent.com/malfihasan/financialAgent-public/main/docker_up.sh)
+   and [`docker-compose.yml`](https://raw.githubusercontent.com/malfihasan/financialAgent-public/main/docker-compose.yml)
+   directly from the repo (they aren't tied to a specific release).
 
 2. **Load the image** and make the launcher executable:
    ```bash

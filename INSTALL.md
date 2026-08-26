@@ -19,6 +19,11 @@ All your data stays on your machine.
 > and Windows releases include the dashboard runtime. Docker includes all
 > application runtimes and Ollama.
 
+> **Downloading an older version?** Every release uses the same filenames
+> (e.g. `FinAgent-macOS.dmg`) — the version lives in the release's git tag,
+> not the filename. Open the [Releases page](https://github.com/malfihasan/financialAgent-public/releases),
+> pick the tag you want, and download from that release instead of "latest".
+
 ---
 
 ## macOS
@@ -100,14 +105,14 @@ lifetime; Settings shows a "Docker locked" badge and hides the folder pickers.
 
 1. **Download the image and launcher files**:
    ```bash
-   curl -LO https://github.com/malfihasan/financialAgent-public/releases/download/v1.0.15/FinAgent-1.0.15-Docker-x86_64.tar.gz
-   curl -LO https://github.com/malfihasan/financialAgent-public/releases/download/v1.0.15/docker_up.sh
-   curl -LO https://github.com/malfihasan/financialAgent-public/releases/download/v1.0.15/docker-compose.yml
+   curl -LO https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Docker-x86_64.tar.gz
+   curl -LO https://raw.githubusercontent.com/malfihasan/financialAgent-public/main/docker_up.sh
+   curl -LO https://raw.githubusercontent.com/malfihasan/financialAgent-public/main/docker-compose.yml
    ```
 
 2. **Load the image** and make the launcher executable:
    ```bash
-   docker load -i FinAgent-1.0.11-Docker-x86_64.tar.gz
+   docker load -i FinAgent-Docker-x86_64.tar.gz
    chmod +x docker_up.sh
    ```
 
@@ -184,12 +189,11 @@ lifetime; Settings shows a "Docker locked" badge and hides the folder pickers.
    docker compose --project-name finagent down
    ```
 
-The versioned `FinAgent-<version>-Docker-x86_64.tar.gz` image is the Docker
-artifact. `FinAgent-Docker-x86_64.tar.gz` is its stable latest-download alias.
-The release also includes `docker_up.sh` and `docker-compose.yml`; these are
-launcher assets, not another application image. The published image is x86_64.
-Apple Silicon Docker Desktop can run it through emulation; native ARM Linux
-requires a separately built ARM64 image.
+`FinAgent-Docker-x86_64.tar.gz` is the Docker image. `docker_up.sh` and
+`docker-compose.yml` are launcher assets (not part of the image); download
+them once from the repo — they aren't tied to a specific release version.
+The published image is x86_64. Apple Silicon Docker Desktop can run it
+through emulation; native ARM Linux requires a separately built ARM64 image.
 
 ---
 
