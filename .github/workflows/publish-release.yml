@@ -54,44 +54,33 @@ jobs:
           from pathlib import Path
 
           readme_path = Path("README.md")
-          install_path = Path("INSTALL.md")
           version = os.environ["VERSION"]
+
+          # Release asset filenames are permanent/generic (FinAgent-macOS.dmg,
+          # etc.) — the git tag is the version, so nothing else in README.md
+          # or INSTALL.md ever needs per-release rewriting. Only this badge does.
           badge = (
               f"[![Latest Release](https://img.shields.io/badge/Latest%20Release-v{version}-brightgreen?style=flat-square)]"
               "(https://github.com/malfihasan/financialAgent-public/releases/latest)"
           )
-          text = readme_path.read_text(encoding="utf-8")
-          pattern = re.compile(
+          readme_text = readme_path.read_text(encoding="utf-8")
+          badge_pattern = re.compile(
               r"^\[!\[Latest Release\]\([^\n]+\)\]"
               r"\(https://github\.com/malfihasan/financialAgent-public/releases/latest\)$",
               re.MULTILINE,
           )
-          updated, count = pattern.subn(badge, text, count=1)
+          readme_text, count = badge_pattern.subn(badge, readme_text, count=1)
           if count != 1:
               raise SystemExit("Could not find README Latest Release badge line")
-          readme_path.write_text(updated, encoding="utf-8")
 
-          install_text = install_path.read_text(encoding="utf-8")
-          release_base = "https://github.com/malfihasan/financialAgent-public/releases"
-          install_text = re.sub(
-              rf"{re.escape(release_base)}/(?:latest/download|download/v[^/]+)/"
-              r"(?:FinAgent-)?(?:[0-9]+\.[0-9]+\.[0-9]+-)?Docker-x86_64\.tar\.gz",
-              f"{release_base}/download/v{version}/FinAgent-{version}-Docker-x86_64.tar.gz",
-              install_text,
-          )
-          install_text = re.sub(
-              rf"{re.escape(release_base)}/(?:latest/download|download/v[^/]+)/(docker_up\.sh|docker-compose\.yml)",
-              rf"{release_base}/download/v{version}/\1",
-              install_text,
-          )
-          install_path.write_text(install_text, encoding="utf-8")
+          readme_path.write_text(readme_text, encoding="utf-8")
           PY
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet README.md INSTALL.md; then
-            git add README.md INSTALL.md
-            git commit -m "docs: update release metadata for v${VERSION}"
+          if ! git diff --quiet README.md; then
+            git add README.md
+            git commit -m "docs: update release badge for v${VERSION}"
             git push
           else
             echo "Release metadata already up to date."
@@ -108,27 +97,7 @@ jobs:
             --repo "${PRIVATE_REPO}" \
             --dir release-assets \
             --pattern "FinAgent-*"
-          gh release download "v${VERSION}" \
-            --repo "${PRIVATE_REPO}" \
-            --dir release-assets \
-            --pattern "docker_up.sh"
-          gh release download "v${VERSION}" \
-            --repo "${PRIVATE_REPO}" \
-            --dir release-assets \
-            --pattern "docker-compose.yml"
           echo "Downloaded assets:"
-          ls -lh release-assets/
-
-      - name: Create stable latest-download aliases
-        env:
-          VERSION: ${{ steps.vars.outputs.version }}
-        run: |
-          set -euo pipefail
-          cp "release-assets/FinAgent-${VERSION}-macOS.dmg" "release-assets/FinAgent-macOS.dmg"
-          cp "release-assets/FinAgent-${VERSION}-Linux-x86_64.tar.gz" "release-assets/FinAgent-Linux-x86_64.tar.gz"
-          cp "release-assets/FinAgent-${VERSION}-Windows-x64.exe" "release-assets/FinAgent-Windows-x64.exe"
-          cp "release-assets/FinAgent-${VERSION}-Docker-x86_64.tar.gz" "release-assets/FinAgent-Docker-x86_64.tar.gz"
-          echo "Release assets with stable aliases:"
           ls -lh release-assets/
 
       - name: Create public GitHub Release
