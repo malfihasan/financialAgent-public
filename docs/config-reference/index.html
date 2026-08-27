@@ -358,6 +358,32 @@
   
   
     <li class="md-nav__item">
+      <a href="../place-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Google Places API lookup
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../terminal/" class="md-nav__link">
         
   
@@ -690,8 +716,13 @@ through the dashboard's Settings page, the terminal wizard
 </tr>
 <tr>
 <td><code>location_lookup_method</code></td>
-<td><code>nominatim</code> · <code>none</code></td>
-<td><code>nominatim</code> is shown in the dashboard as "Open Street Map".</td>
+<td><code>nominatim</code> · <code>google_maps</code> · <code>combined</code> · <code>place_api</code> · <code>place_api_combined</code> · <code>none</code></td>
+<td>Personal supports <code>nominatim</code>, both Place API modes, and <code>none</code>. Selenium methods require Dev.</td>
+</tr>
+<tr>
+<td><code>google_places_api_key</code></td>
+<td>string</td>
+<td>Required by <code>place_api</code> and <code>place_api_combined</code>. Stored locally and masked by the dashboard API. See <a href="../place-api/">Google Places API lookup</a>.</td>
 </tr>
 <tr>
 <td><code>nominatim_email</code></td>
