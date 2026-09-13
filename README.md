@@ -73,7 +73,7 @@ platform:
 
 <p align="center"><em>macOS installation quick start: download the latest release and begin setup.</em></p>
 
-1. **Download** the latest `FinAgent-<version>-macOS.dmg` from the
+1. **Download** the latest `FinAgent-macOS.dmg` from the
    [GitHub releases page](https://github.com/malfihasan/financialAgent-public/releases/latest).
 
 2. **Install** — open the `.dmg` and drag **FinAgent.app** into `Applications`.
@@ -119,7 +119,7 @@ invoked — from a shell it runs inline (all
 [terminal flags](https://malfihasan.github.io/financialAgent-public/docs/terminal/)
 work as expected); from Finder it opens Terminal.app for you.
 
-> See the full [macOS installation guide](https://malfihasan.github.io/financialAgent-public/docs/installation/#macos-installation)
+> See the full [macOS installation guide](https://malfihasan.github.io/financialAgent-public/docs/installation-macos/)
 > for more detail.
 
 ### 🐧 Linux (x86_64)
@@ -208,7 +208,7 @@ different host port, while omitting it uses the dashboard port plus 2.
 To use the included Ollama service, replace `--no-ollama-model` with
 `--ollama-model` to download the small `qwen2.5:0.5b` model into a persistent
 Docker volume. Claude and OpenRouter keys can also be stored in a local .env file that is locked to 600 permissions. See [Quick start](docs/quick-start/#docker) for the shortest
-copy-paste command. The [detailed Docker installation](docs/installation/#docker-installation)
+copy-paste command. The [detailed Docker installation](docs/installation-docker/)
 covers provider commands, custom models, persistence, updates, and
 troubleshooting; [INSTALL.md](INSTALL.md#docker) includes release verification
 and cleanup checks.

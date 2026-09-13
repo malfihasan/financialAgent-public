@@ -13,33 +13,33 @@
       
       
       
-        <link rel="prev" href="../profiles/">
+        <link rel="prev" href="../installation-macos/">
       
       
-        <link rel="next" href="../categories-rules/">
+        <link rel="next" href="../installation-windows/">
       
       
         
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="zensical-0.0.52">
+      <meta name="generator" content="zensical-0.0.61">
     
     
       
-        <title>Configuration reference - FinAgent Documentation</title>
+        <title>Linux - FinAgent Documentation</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../assets/stylesheets/modern/main.8b3b5a67.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.ce62732f.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.dfe2e883.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/modern/palette.812a03bb.min.css">
       
       
 
@@ -57,6 +57,8 @@
         <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
       
     
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
     <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
@@ -83,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuration-reference" class="md-skip">
+        <a href="#install-on-linux" class="md-skip">
           Skip to content
         </a>
       
@@ -119,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Configuration reference
+              Linux
             
           </span>
         </div>
@@ -235,7 +237,7 @@
   <span class="md-ellipsis">
     
   
-  Quick start
+  Quick Start
 
     
   </span>
@@ -251,11 +253,29 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../installation/" class="md-nav__link">
+  
+    
+    
+    
+    
+      
         
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
   
   
   <span class="md-ellipsis">
@@ -268,26 +288,34 @@
   
   
 
-      </a>
-    </li>
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
   
+  Installation
 
-    
-      
-      
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="../setup/" class="md-nav__link">
+      <a href="../installation-macos/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-  First-run setup
+  macOS
 
     
   </span>
@@ -298,165 +326,10 @@
     </li>
   
 
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../import/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Importing statements
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../processing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Processing pipeline
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../place-api/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Google Places API lookup
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../terminal/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Running from the terminal
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../restart/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Restarting FinAgent
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../profiles/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  Profiles (Personal & Dev)
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
+              
+            
+              
+                
   
   
     
@@ -478,7 +351,7 @@
   <span class="md-ellipsis">
     
   
-  Configuration reference
+  Linux
 
     
   </span>
@@ -495,7 +368,7 @@
   <span class="md-ellipsis">
     
   
-  Configuration reference
+  Linux
 
     
   </span>
@@ -521,10 +394,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#keys" class="md-nav__link">
+  <a href="#download-and-install" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Keys
+        Download and install
       </span>
     </span>
   </a>
@@ -532,10 +405,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ports" class="md-nav__link">
+  <a href="#desktop-integration-notes" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Ports
+        Desktop integration notes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Next steps
       </span>
     </span>
   </a>
@@ -549,22 +433,23 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="../categories-rules/" class="md-nav__link">
+      <a href="../installation-windows/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-  Categories & rules
+  Windows
 
     
   </span>
@@ -572,6 +457,425 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation-docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Docker
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  How to Use
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  How to Use
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../settings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Settings
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Import
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Process
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../location-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Location Engine
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-engine/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  AI Engine
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Rules
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../categories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Categories
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../restart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Restarting FinAgent
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Advanced Use
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  Advanced Use
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Profiles
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terminal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Running from the Terminal
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -617,10 +921,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#keys" class="md-nav__link">
+  <a href="#download-and-install" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Keys
+        Download and install
       </span>
     </span>
   </a>
@@ -628,10 +932,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#ports" class="md-nav__link">
+  <a href="#desktop-integration-notes" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Ports
+        Desktop integration notes
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Next steps
       </span>
     </span>
   </a>
@@ -653,122 +968,45 @@
                 
                   
 
-<h1 id="configuration-reference">Configuration reference<a class="headerlink" href="#configuration-reference" title="Permanent link">&para;</a></h1>
-<p>Personal config lives at <code>~/.finagent/config.json</code> and Dev config normally
-lives at <code>~/.finagent-dev/config.json</code>. Override the active directory with
-the <code>FINAGENT_CONFIG_DIR</code> environment variable. Edit the selected profile
-through the dashboard's Settings page, the terminal wizard
-(<code>finagent --setup</code>), or by hand.</p>
-<h2 id="keys">Keys<a class="headerlink" href="#keys" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Key</th>
-<th>Values</th>
-<th>Notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>statements_dir</code></td>
-<td>path</td>
-<td>Raw statements root. Locked after setup — rerun <code>finagent --setup</code> to change.</td>
-</tr>
-<tr>
-<td><code>processing_dir</code></td>
-<td>path</td>
-<td>Pipeline output + dashboard data. Locked after setup.</td>
-</tr>
-<tr>
-<td><code>llm_provider</code></td>
-<td><code>ollama</code> · <code>open_router</code> · <code>claude</code> · <code>none</code></td>
-<td>Categorization engine (<a href="../installation/#setting-up-an-llm-provider">setup guide</a>).</td>
-</tr>
-<tr>
-<td><code>llm_model</code></td>
-<td>model name</td>
-<td>e.g. <code>llama3.1:8b</code> for Ollama.</td>
-</tr>
-<tr>
-<td><code>ollama_model</code></td>
-<td>model name</td>
-<td>Ollama only. Default <code>qwen2.5:3b</code>; must already be pulled (<code>ollama pull &lt;model&gt;</code>), e.g. <code>qwen3</code>.</td>
-</tr>
-<tr>
-<td><code>ollama_api_url</code></td>
-<td>URL</td>
-<td>Ollama only. Default <code>http://localhost:11434</code>.</td>
-</tr>
-<tr>
-<td><code>openrouter_api_key</code></td>
-<td>string</td>
-<td>Only for the OpenRouter provider. Free to generate at <a href="https://openrouter.ai/keys">openrouter.ai/keys</a>.</td>
-</tr>
-<tr>
-<td><code>claude_api_key</code></td>
-<td>string</td>
-<td>Only for the Claude provider. Paid — generate at <a href="https://console.anthropic.com/">console.anthropic.com</a> after adding billing.</td>
-</tr>
-<tr>
-<td><code>claude_model</code></td>
-<td>model name</td>
-<td>Claude only. Default <code>claude-opus-4-5</code>.</td>
-</tr>
-<tr>
-<td><code>location_lookup_method</code></td>
-<td><code>nominatim</code> · <code>google_maps</code> · <code>combined</code> · <code>place_api</code> · <code>place_api_combined</code> · <code>none</code></td>
-<td>Personal supports <code>nominatim</code>, both Place API modes, and <code>none</code>. Selenium methods require Dev.</td>
-</tr>
-<tr>
-<td><code>google_places_api_key</code></td>
-<td>string</td>
-<td>Required by <code>place_api</code> and <code>place_api_combined</code>. Stored locally and masked by the dashboard API. See <a href="../place-api/">Google Places API lookup</a>.</td>
-</tr>
-<tr>
-<td><code>nominatim_email</code></td>
-<td>email or <code>""</code></td>
-<td>Optional contact email shared with OpenStreetMap. Empty by default.</td>
-</tr>
-<tr>
-<td><code>dashboard_port</code></td>
-<td>number</td>
-<td>Default <code>3001</code>. Docs are served on port + 2.</td>
-</tr>
-<tr>
-<td><code>ui_profile</code></td>
-<td><code>personal</code> · <code>dev</code></td>
-<td>Profile recorded in this config (<a href="../profiles/">details</a>).</td>
-</tr>
-<tr>
-<td><code>setup_complete</code></td>
-<td>bool</td>
-<td>Set automatically by first-run setup.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="ports">Ports<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Port</th>
-<th>Serves</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>dashboard_port</code></td>
-<td>The dashboard (production)</td>
-</tr>
-<tr>
-<td><code>dashboard_port + 1</code></td>
-<td>API server (dev mode only)</td>
-</tr>
-<tr>
-<td><code>dashboard_port + 2</code></td>
-<td>This documentation site</td>
-</tr>
-</tbody>
-</table>
+<h1 id="install-on-linux">Install on Linux<a class="headerlink" href="#install-on-linux" title="Permanent link">&para;</a></h1>
+<p>The Linux x86_64 archive contains the packaged FinAgent binary and dashboard
+runtime. Normal use does not require a separate Python or Node.js installation.</p>
+<h2 id="download-and-install">Download and install<a class="headerlink" href="#download-and-install" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Download
+   <a href="https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Linux-x86_64.tar.gz">FinAgent-Linux-x86_64.tar.gz</a>.</li>
+<li>
+<p>Extract the archive:</p>
+<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xzf<span class="w"> </span>FinAgent-Linux-x86_64.tar.gz
+<span class="nb">cd</span><span class="w"> </span>finagent_bundle
+</code></pre></div>
+</li>
+<li>
+<p>Run the included installer. It installs to your user account, adds the
+   <code>finagent</code> command, and creates an application-menu entry without <code>sudo</code>:</p>
+<div class="highlight"><pre><span></span><code>./install.sh
+</code></pre></div>
+</li>
+<li>
+<p>Start FinAgent from the app menu or terminal:</p>
+<div class="highlight"><pre><span></span><code>finagent
+</code></pre></div>
+</li>
+</ol>
+<p>To run the bundle in place instead, mark the executable if needed and launch
+it directly:</p>
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>./finagent
+./finagent
+</code></pre></div>
+<h2 id="desktop-integration-notes">Desktop integration notes<a class="headerlink" href="#desktop-integration-notes" title="Permanent link">&para;</a></h2>
+<p>A browser must be available for the dashboard. On minimal or remote Linux
+systems, start FinAgent and open the printed <code>http://localhost:&lt;port&gt;</code> address
+from a browser that can reach the same machine.</p>
+<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<p>The first launch opens <a href="../settings/">Settings</a>. Complete it, <a href="../import/">Import</a>
+a bank CSV or supported tabular text statement, then use
+<a href="../processing/">Process</a>. For automation and maintenance options, see
+<a href="../terminal/">Running from the Terminal</a>.</p>
 
 
 
@@ -831,10 +1069,14 @@ through the dashboard's Settings page, the terminal wizard
     
       
       
-      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["navigation.sections","navigation.top","content.code.copy"],"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":["navigation.sections","navigation.top","content.code.copy"],"redirect":null,"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../assets/javascripts/bundle.ed145cee.min.js"></script>
+      <script src="../assets/javascripts/bundle.df5d1f2b.min.js"></script>
       
     
   </body>
