@@ -239,6 +239,18 @@ the wizard at any time with `finagent --reconfigure`.
 > those fields in the dashboard. To change a mount or published port, stop the
 > container and run `docker_up.sh` again with the new option.
 
+## 🧪 Try It With a Demo Statement
+
+No bank statement handy yet? Download this synthetic Bank of America checking
+export and import it to see the full dashboard populated with sample
+transactions — no real account or bank credentials required:
+
+**[⬇️ Download demo statement (boa_chk_4821_20260101_20260401.csv)](sample_data/boa_chk_4821_20260101_20260401.csv)**
+
+Launch FinAgent, choose **Import bank statements**, pick **Bank of America →
+Checking Account**, and upload the downloaded file. Then run the processing
+pipeline to see it categorized on the dashboard.
+
 ## 📁 Adding Bank Statements
 
 1. On your bank's export page, download a **CSV** or supported tabular text
