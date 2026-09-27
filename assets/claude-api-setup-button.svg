@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="112" viewBox="0 0 620 112" role="img" aria-labelledby="title description">
+  <title id="title">How to set up a Claude API key</title>
+  <desc id="description">A glowing coral documentation button</desc>
+  <defs>
+    <filter id="glow" x="-20%" y="-60%" width="140%" height="220%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feFlood flood-color="#f0715a" flood-opacity="0.75"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect x="14" y="14" width="592" height="84" rx="14" fill="#241714" stroke="#ff8a72" stroke-width="3" filter="url(#glow)"/>
+  <circle cx="65" cy="56" r="22" fill="#ff8a72"/>
+  <path d="M58 57a7 7 0 1 1 7 7h-3v6h-7V59a3 3 0 0 1 3-3h7a3 3 0 1 0-3-3" fill="none" stroke="#241714" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="102" y="65" fill="#fff8f5" font-family="Arial, sans-serif" font-size="27" font-weight="700">Set up Claude API key</text>
+  <path d="m552 46 10 10-10 10m10-10h-24" fill="none" stroke="#ffb4a4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -554,6 +554,60 @@
   
   
     <li class="md-nav__item">
+      <a href="../transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Transactions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../budget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Budget
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../location-engine/" class="md-nav__link">
         
   
@@ -999,6 +1053,8 @@ They are fast, repeatable, and do not require internet access.</p>
 category and records <code>rule</code> as the categorization stage. Transactions without a
 match continue to the <a href="../location-engine/">Location Engine</a>, then the optional
 <a href="../ai-engine/">AI Engine</a>.</p>
+<p>A custom rule can also be limited to one or more exact account numbers. Leave
+the account field empty when the rule should apply to every account.</p>
 <h2 id="rule-priority">Rule priority<a class="headerlink" href="#rule-priority" title="Permanent link">&para;</a></h2>
 <p>Rules are evaluated by priority. More specific merchant patterns should run
 before broad terms so a generic keyword does not capture the transaction first.
@@ -1014,6 +1070,8 @@ apply them to pipeline output.</p>
 <li>Review keywords before opening a rule.</li>
 <li>Add a custom rule with a unique name, supported category, keywords, and
   priority.</li>
+<li>Optionally enter a comma-separated list of exact account numbers. The rule
+  must match both its keyword conditions and one of those accounts.</li>
 <li>Edit or delete rules you created.</li>
 <li>Inspect built-in rules while keeping the shipped defaults intact.</li>
 </ul>
@@ -1025,6 +1083,8 @@ saving.</p>
 <ul>
 <li>Use a merchant token such as <code>TRADER JOE</code> instead of a city or card suffix.</li>
 <li>Add only variants that belong to the same merchant and category.</li>
+<li>Scope the rule by account when the same description means different things
+  on different accounts.</li>
 <li>Avoid broad words such as <code>PAYMENT</code>, <code>STORE</code>, or a state abbreviation.</li>
 <li>Choose an existing category whenever possible so reporting stays consistent.</li>
 </ul>
@@ -1036,8 +1096,15 @@ saving.</p>
 <li>Go to <a href="../processing/">Process</a> and run again.</li>
 <li>Verify the result and stage on Transactions.</li>
 </ol>
-<p>For a one-time exception, edit the transaction directly instead. Manual edits
-are recorded as <code>user_defined</code> and protected by default during later merges.</p>
+<p>For a one-time exception, edit or <a href="../transactions/">split the transaction</a>
+instead. Manual edits are recorded as <code>user_defined</code> and protected by default
+during later merges.</p>
+<div class="admonition note">
+<p class="admonition-title">Built-in rules</p>
+</div>
+<p>Account scope is available for custom dashboard rules. The shipped
+  markdown rules remain global unless their existing organization and account
+  type conditions narrow them.</p>
 
 
 

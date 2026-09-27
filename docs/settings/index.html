@@ -620,6 +620,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#recovery-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recovery Data
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installed-and-latest-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installed and latest versions
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#configuration-reference" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -681,6 +703,60 @@
     
   
   Process
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Transactions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../budget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Budget
 
     
   </span>
@@ -1075,6 +1151,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#recovery-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Recovery Data
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installed-and-latest-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Installed and latest versions
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#configuration-reference" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
@@ -1224,6 +1322,37 @@ not transaction amounts or account numbers.</p>
 <p>Most provider and lookup changes are used on the next processing run. After
 saving, go to <a href="../processing/">Process</a> and run again. Port changes require a
 restart.</p>
+<h2 id="recovery-data">Recovery Data<a class="headerlink" href="#recovery-data" title="Permanent link">&para;</a></h2>
+<p><strong>Recovery Data</strong> can move or back up the active profile without changing the
+authoritative files in place while the archive is being validated.</p>
+<ul>
+<li><strong>Export data</strong> downloads a ZIP containing the active configuration,
+  imported statements, processing output, budgets, transaction splits,
+  dynamic rules, and custom categories.</li>
+<li><strong>Import data</strong> validates a FinAgent recovery ZIP, rejects unexpected or
+  unsafe paths, stages its contents, and replaces the active profile only
+  after validation. Machine-specific paths in the restored config are updated
+  to the current profile's folders.</li>
+<li><strong>Refresh</strong> reloads the dashboard after an import.</li>
+<li><strong>Reset all data</strong> removes the active config, statements, processing data,
+  dynamic rules, and custom categories. It is enabled only after typing
+  <code>DELETE MY FINAGENT DATA</code> exactly.</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Recovery ZIP files contain private data</p>
+<p>An export can contain bank records, processed transactions, local paths,
+and <strong>unmasked API keys</strong> from <code>config.json</code>. Store it like a financial
+backup, do not publish it, and import only archives you trust.</p>
+</div>
+<p>Export is disabled until first-run setup is complete. After import or reset,
+reload the page so onboarding and data availability are recalculated.</p>
+<h2 id="installed-and-latest-versions">Installed and latest versions<a class="headerlink" href="#installed-and-latest-versions" title="Permanent link">&para;</a></h2>
+<p>Open <strong>About FinAgent</strong> from the application menu to see the installed version.
+It comes from the packaged <code>VERSION</code> file and is the same value printed by
+<code>finagent --version</code>. Select <strong>Check now</strong> to query the public GitHub latest
+release. This request sends no financial data; it only reads public release
+metadata. FinAgent reports an update only when that release is newer than the
+installed semantic version.</p>
 <h2 id="configuration-reference">Configuration reference<a class="headerlink" href="#configuration-reference" title="Permanent link">&para;</a></h2>
 <p>Personal settings normally live at <code>~/.finagent/config.json</code>; Dev settings
 normally live at <code>~/.finagent-dev/config.json</code>. <code>FINAGENT_CONFIG_DIR</code> can
@@ -1334,7 +1463,8 @@ supply a different directory for an advanced launch.</p>
 </tr>
 </tbody>
 </table>
-<p>Do not publish <code>config.json</code>: it can contain API keys and local folder paths.
+<p>Do not publish <code>config.json</code> or a Recovery Data ZIP: either can contain API
+keys and local folder paths.
 For command-line profile selection and one-run overrides, see
 <a href="../terminal/">Running from the Terminal</a>.</p>
 

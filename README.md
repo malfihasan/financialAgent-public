@@ -25,11 +25,62 @@ control on your computer.
   and optional Ollama, Claude, or OpenRouter assistance.
 - 🗂️ Maintains one persistent transaction master while preserving categories edited
   from the dashboard.
+- 🧾 Splits mixed purchases across categories without rewriting the transaction master.
 - 📅 Supports inclusive date-range views without deleting older transaction history.
 - 📊 Provides a local dashboard for totals, trends, category analysis, transaction
   review, budgets, and rule management.
-- 🗄️ Keeps monthly budget archives and asks before replacing an existing archive.
+- 🐷 Plans Wishlist / Piggy Bank goals alongside fixed, recurring, and variable costs.
+- 🗄️ Exports and restores local Recovery Data, and protects full reset with typed confirmation.
 - 💻 Runs with a guided setup and statement-import workflow on macOS, Linux, and Windows.
+
+## 🔑 Before You Process: Two Optional Accuracy Boosters
+
+FinAgent is designed to make everyday transaction categorization accurate and
+low-maintenance. Its built-in rules and free options work without paid API
+keys, but the following services can improve results when statement
+descriptions are unclear.
+
+### 1. Claude API: stronger AI categorization
+
+Claude is a hosted AI option for transactions that FinAgent's rules and
+Location Engine could not resolve. It generally provides more capable
+categorization than a small local model, requires an Anthropic API key, and is
+billed by Anthropic based on usage. FinAgent adds no fee and reports an
+estimated output-token cost after processing; Anthropic's billing page remains
+the source of truth.
+
+A paid API is **not required**. You can instead use Ollama locally at no API
+cost, choose a complimentary or paid OpenRouter model, or disable the AI Engine.
+The default Ollama model can run on many modern laptops, including Apple silicon,
+although performance and accuracy depend on the machine and model.
+
+### 2. Google Places API: richer merchant location matches
+
+FinAgent uses free OpenStreetMap lookup by default and does not require a key.
+Google Places can provide broader business coverage for difficult merchant
+descriptions, giving the later categorization stages better evidence. It
+requires a Google Cloud project with billing enabled. The recommended
+**Place API combined flow** checks OpenStreetMap first and calls Google only
+when the free lookup has no useful result; accepted matches are cached locally
+to reduce repeat requests.
+
+Google sets its own pricing, quotas, and credits, so usage cannot be guaranteed
+to cost nothing. FinAgent adds no markup and lets you choose the free,
+combined, or direct Google workflow.
+
+<p align="center">
+   <a href="https://malfihasan.github.io/financialAgent-public/docs/ai-engine/#set-up-claude"><img src="assets/claude-api-setup-button.svg" alt="How to set up a Claude API key" width="310"></a>
+   &nbsp;&nbsp;
+   <a href="https://malfihasan.github.io/financialAgent-public/docs/location-engine/#create-and-protect-an-api-key"><img src="assets/google-places-api-setup-button.svg" alt="How to set up a Google Places API key" width="310"></a>
+</p>
+
+<p align="center"><strong>In one line:</strong> Google Places helps identify the merchant; Claude helps categorize what remains.</p>
+
+> **Why use both?** Together, richer location evidence and capable AI can make
+> categorization more accurate and reduce manual cleanup. They remain optional:
+> rules, free OpenStreetMap lookup, and local Ollama processing provide a
+> no-API-cost path, while cloud-provider pricing and the final setup choice stay
+> entirely under your control.
 
 ## Dashboard Preview
 

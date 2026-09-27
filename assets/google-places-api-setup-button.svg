@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="112" viewBox="0 0 620 112" role="img" aria-labelledby="title description">
+  <title id="title">How to set up a Google Places API key</title>
+  <desc id="description">A glowing teal documentation button</desc>
+  <defs>
+    <filter id="glow" x="-20%" y="-60%" width="140%" height="220%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feFlood flood-color="#38d6bd" flood-opacity="0.7"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect x="14" y="14" width="592" height="84" rx="14" fill="#102320" stroke="#4ae7ca" stroke-width="3" filter="url(#glow)"/>
+  <circle cx="65" cy="56" r="22" fill="#4ae7ca"/>
+  <path d="M65 42a11 11 0 0 0-11 11c0 9 11 18 11 18s11-9 11-18a11 11 0 0 0-11-11Zm0 7a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z" fill="#102320"/>
+  <text x="102" y="65" fill="#f2fffc" font-family="Arial, sans-serif" font-size="27" font-weight="700">Set up Google Places API</text>
+  <path d="m552 46 10 10-10 10m10-10h-24" fill="none" stroke="#a0f5e4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

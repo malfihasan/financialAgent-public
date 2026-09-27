@@ -16,7 +16,7 @@
         <link rel="prev" href="../import/">
       
       
-        <link rel="next" href="../location-engine/">
+        <link rel="next" href="../transactions/">
       
       
         
@@ -761,6 +761,60 @@
   
   
     <li class="md-nav__item">
+      <a href="../transactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Transactions
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../budget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Budget
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../location-engine/" class="md-nav__link">
         
   
@@ -1263,6 +1317,10 @@ you can independently allow replacement of:</p>
 only when you deliberately want that stage recalculated. Rebuilding with
 <code>--overwrite-dashboard-data</code> is a separate terminal maintenance operation that
 replaces the dashboard master from current pipeline output.</p>
+<p><a href="../transactions/">Transaction splits</a> are treated as manual decisions. Normal
+runs preserve their separate split records. Enabling <strong>Manual categories</strong>
+overwrite deliberately removes existing splits so stale allocations cannot be
+applied to newly recalculated transactions.</p>
 <h2 id="processing-stages">Processing stages<a class="headerlink" href="#processing-stages" title="Permanent link">&para;</a></h2>
 <h3 id="1-discover-and-parse-statements">1. Discover and parse statements<a class="headerlink" href="#1-discover-and-parse-statements" title="Permanent link">&para;</a></h3>
 <p>FinAgent scans the configured institution/account folders, identifies supported
@@ -1290,8 +1348,9 @@ merge choices. Carried rows may use the <code>merge</code> stage.</p>
 <h3 id="7-publish-dashboard-data">7. Publish dashboard data<a class="headerlink" href="#7-publish-dashboard-data" title="Permanent link">&para;</a></h3>
 <p>The latest authoritative transactions are merged into
 <code>dashboard_data/master_transactions.csv</code>. Dashboard summaries are calculated
-from that master and the selected inclusive view range. Refresh the browser if
-a completed run is not immediately visible.</p>
+from that master, the separate <code>transaction_splits.csv</code> metadata, and the
+selected inclusive view range. Refresh the browser if a completed run is not
+immediately visible.</p>
 <h2 id="categorization-stages-in-the-dashboard">Categorization stages in the dashboard<a class="headerlink" href="#categorization-stages-in-the-dashboard" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
