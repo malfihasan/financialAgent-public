@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="124" viewBox="0 0 660 124" role="img" aria-labelledby="title description">
+  <title id="title">Try the interactive FinAgent UI demo</title>
+  <desc id="description">An orange button linking to the read-only FinAgent dashboard demo</desc>
+  <defs>
+    <filter id="glow" x="-12%" y="-35%" width="124%" height="170%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feFlood flood-color="#ff5400" flood-opacity="0.42"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect x="12" y="12" width="636" height="100" rx="16" fill="#211b18" stroke="#ff6b2c" stroke-width="3" filter="url(#glow)"/>
+  <circle cx="70" cy="62" r="27" fill="#ff5400"/>
+  <path d="m64 49 21 13-21 13z" fill="#fff8f3"/>
+  <text x="116" y="58" fill="#fff8f3" font-family="Arial, sans-serif" font-size="26" font-weight="700">TRY THE INTERACTIVE UI DEMO</text>
+  <text x="117" y="83" fill="#d3c4bb" font-family="Arial, sans-serif" font-size="14">Explore the Overview and Monthly screens with sample data</text>
+  <path d="m610 52 10 10-10 10m10-10h-22" fill="none" stroke="#ffb28d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

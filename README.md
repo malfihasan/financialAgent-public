@@ -84,7 +84,9 @@ combined, or direct Google workflow.
 
 ## Dashboard Preview
 
-**[Open the interactive FinAgent UI demo](https://malfihasan.github.io/financialAgent-public/demo/)**
+<p align="center">
+   <a href="https://malfihasan.github.io/financialAgent-public/demo/"><img src="assets/interactive-demo-button.svg" alt="Try the interactive FinAgent UI demo" width="620"></a>
+</p>
 
 This read-only preview uses synthetic sample transactions and demonstrates the
 Overview and Monthly screens only. The full FinAgent app includes additional
