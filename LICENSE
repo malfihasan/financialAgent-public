@@ -1,17 +1,62 @@
 FinAgent Binary License
 
-Copyright (c) 2026 Alfimac (malfihasan)
+Version 1.0 — 2026
 
-Permission is granted to download and use FinAgent binaries for personal,
-non-commercial use on your own machines only.
+Copyright © 2026 Alfimac (malfihasan), operating as FinAgent.
+All rights reserved.
 
-Restrictions:
-- You may not redistribute, sell, sublicense, or embed these binaries in
-  other products.
-- You may not reverse-engineer, decompile, or disassemble the binaries.
-- You may not use FinAgent for commercial purposes without a separate
-  written agreement.
+1. Ownership
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. IN NO EVENT
-SHALL THE AUTHORS BE LIABLE FOR ANY DAMAGES ARISING FROM THE USE OF THIS
-SOFTWARE.
+FinAgent, including its software binaries, associated documentation, user interfaces, and related intellectual property, is proprietary software.
+
+All right, title, and interest in FinAgent and the underlying software, including all copyrights and other intellectual property rights, remain with the copyright owner.
+
+This license does not transfer any ownership rights.
+
+No license or rights are granted to any source code, private repositories, algorithms, trade secrets, trademarks, or other intellectual property except as expressly stated in this license.
+
+2. Limited License
+
+Subject to these terms, you are granted a limited, non-exclusive, non-transferable, non-sublicensable license to download, install, and use the publicly released FinAgent binaries on devices you own or control solely for personal, non-commercial use and evaluation.
+
+3. Restrictions
+
+Except with prior written permission from the copyright owner, you may not:
+
+sell, rent, sublicense, redistribute, republish, or commercially distribute FinAgent;
+
+embed, bundle, or incorporate FinAgent binaries into another product or service;
+
+use FinAgent to provide commercial services to third parties;
+
+modify, reverse-engineer, decompile, or disassemble FinAgent, except to the extent such a restriction is prohibited by applicable law;
+
+remove or alter copyright, trademark, attribution, or proprietary notices;
+
+represent that you own FinAgent or any portion of its underlying intellectual property.
+
+Commercial use requires a separate written license or agreement from the copyright owner.
+
+4. No Source-Code License
+
+Distribution of a FinAgent binary does not grant access to, ownership of, or any license to FinAgent's private source code.
+
+The source code and private development repositories remain confidential and proprietary.
+
+5. Termination
+
+This license automatically terminates if you violate these terms.
+
+Upon termination, you must stop using FinAgent and delete copies of the binaries in your possession or control.
+
+6. No Warranty
+
+THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT, TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW.
+
+7. Limitation of Liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE COPYRIGHT OWNER SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES ARISING FROM OR RELATING TO THE USE OF OR INABILITY TO USE FINAGENT.
+
+8. Commercial Licensing
+
+For commercial licensing or other permissions, contact the copyright owner through the contact information provided in the FinAgent repository.
