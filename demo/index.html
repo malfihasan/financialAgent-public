@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/financialAgent-public/demo/finagent-logo.svg" type="image/svg+xml" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FinAgent · Your financial view</title>
+    <script>
+      // Apply saved theme before first paint to avoid flash
+      try {
+        var t = localStorage.getItem("finagent-theme");
+        if (t === "dark" || (!t && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.classList.add("dark");
+        }
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="/financialAgent-public/demo/assets/index-BKwPNqbY.js"></script>
+    <link rel="stylesheet" crossorigin href="/financialAgent-public/demo/assets/index-D9VisKcl.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
