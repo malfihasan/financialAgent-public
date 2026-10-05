@@ -30,6 +30,8 @@ control on your computer.
 - 📊 Provides a local dashboard for totals, trends, category analysis, transaction
   review, budgets, and rule management.
 - 🐷 Plans Wishlist / Piggy Bank goals alongside fixed, recurring, and variable costs.
+- 🏛️ Tracks checking account balances over time from each statement's own
+  "Beginning balance as of" line, with its own scoped refresh run.
 - 🗄️ Exports and restores local Recovery Data, and protects full reset with typed confirmation.
 - 💻 Runs with a guided setup and statement-import workflow on macOS, Linux, and Windows.
 
