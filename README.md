@@ -314,6 +314,34 @@ Launch FinAgent, choose **Import bank statements**, pick **Bank of America →
 Checking Account**, and upload the downloaded file. Then run the processing
 pipeline to see it categorized on the dashboard.
 
+### Item-by-item receipts (Walmart Beta)
+
+Want to see a purchase broken down into its items? Also download the sample
+**[Walmart receipt (walmart_demo_receipt.pdf)](sample_data/walmart_demo_receipt.pdf)**.
+It is a $7.76 purchase made on 2026-09-19 and matches the
+`WAL-MART #3479 ROGERS AR` transaction (09/20/2026) in the demo
+statement (July–September 2026), so the two work together. Import the statement first, then open the
+**Import** page, scroll to **Receipts**, choose **Walmart**, add the PDF, and run
+processing. FinAgent reads the receipt, links it to the matching bank transaction
+(same amount, purchase date within ±2 days) and categorizes every item; on the
+**Transactions** page that transaction gets an arrow that expands into its items.
+Real Walmart receipts (in-store or walmart.com order pages saved as PDF) work the
+same way. Receipt reading runs locally on your machine.
+
+### Changelog — 2.0.x (upcoming)
+
+- **Walmart item-wise automation (Beta):** import receipt PDFs, link purchases
+  to bank transactions, and review item-level categories on the dashboard.
+- **Cleaner Import page:** imported receipt details and linked transactions
+  are grouped under toggles. Counts, run controls, and attention alerts remain
+  visible; starting a run expands the details for review.
+- **Unchanged workflow:** receipt import, matching, categorization, corrections,
+  and deletion continue to work as before.
+
+Application source remains private. Public app releases are distributed as
+packaged binaries and Docker images; this repository contains documentation,
+sample data, and the read-only demo.
+
 ## 📁 Adding Bank Statements
 
 1. On your bank's export page, download a **CSV** or supported tabular text
