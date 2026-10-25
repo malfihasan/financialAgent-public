@@ -394,13 +394,52 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#download-and-install" class="md-nav__link">
+  <a href="#option-1-portable-archive-x86_64-or-arm64" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Download and install
+        Option 1 — Portable Archive (<code>x86_64</code> or <code>ARM64</code>)
       </span>
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-2-flatpak-flathub-iogithubmalfihasanfinagent" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Option 2 — Flatpak / Flathub (<code>io.github.malfihasan.FinAgent</code>)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Option 2 — Flatpak &#x2f; Flathub (io.github.malfihasan.FinAgent)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-from-a-flatpak-release-bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Install from a <code>.flatpak</code> release bundle
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-and-install-from-the-flathub-manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Build and install from the Flathub manifest
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1029,13 +1068,52 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#download-and-install" class="md-nav__link">
+  <a href="#option-1-portable-archive-x86_64-or-arm64" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Download and install
+        Option 1 — Portable Archive (<code>x86_64</code> or <code>ARM64</code>)
       </span>
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-2-flatpak-flathub-iogithubmalfihasanfinagent" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Option 2 — Flatpak / Flathub (<code>io.github.malfihasan.FinAgent</code>)
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Option 2 — Flatpak &#x2f; Flathub (io.github.malfihasan.FinAgent)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-from-a-flatpak-release-bundle" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Install from a <code>.flatpak</code> release bundle
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-and-install-from-the-flathub-manifest" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Build and install from the Flathub manifest
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1077,15 +1155,17 @@
                   
 
 <h1 id="install-on-linux">Install on Linux<a class="headerlink" href="#install-on-linux" title="Permanent link">&para;</a></h1>
-<p>The Linux x86_64 archive contains the packaged FinAgent binary and dashboard
-runtime. Normal use does not require a separate Python or Node.js installation.</p>
-<h2 id="download-and-install">Download and install<a class="headerlink" href="#download-and-install" title="Permanent link">&para;</a></h2>
+<p>FinAgent is available for Linux on both <strong>x86_64</strong> (Intel/AMD) and <strong>ARM64</strong>
+(aarch64) systems, and can also be installed as a <strong>Flatpak</strong> (<code>io.github.malfihasan.FinAgent</code>).
+The release archive contains the packaged FinAgent binary and dashboard runtime.</p>
+<h2 id="option-1-portable-archive-x86_64-or-arm64">Option 1 — Portable Archive (<code>x86_64</code> or <code>ARM64</code>)<a class="headerlink" href="#option-1-portable-archive-x86_64-or-arm64" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Download
-   <a href="https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Linux-x86_64.tar.gz">FinAgent-Linux-x86_64.tar.gz</a>.</li>
+<li>Download the archive for your architecture:</li>
+<li><strong>Intel / AMD (<code>x86_64</code>)</strong>: <a href="https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Linux-x86_64.tar.gz">FinAgent-Linux-x86_64.tar.gz</a></li>
+<li><strong>ARM64 (<code>aarch64</code>)</strong>: <a href="https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Linux-arm64.tar.gz">FinAgent-Linux-arm64.tar.gz</a></li>
 <li>
 <p>Extract the archive:</p>
-<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xzf<span class="w"> </span>FinAgent-Linux-x86_64.tar.gz
+<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xzf<span class="w"> </span>FinAgent-Linux-x86_64.tar.gz<span class="w">   </span><span class="c1"># or FinAgent-Linux-arm64.tar.gz</span>
 <span class="nb">cd</span><span class="w"> </span>finagent_bundle
 </code></pre></div>
 </li>
@@ -1105,6 +1185,18 @@ runtime. Normal use does not require a separate Python or Node.js installation.<
 it directly:</p>
 <div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>./finagent
 ./finagent
+</code></pre></div>
+<h2 id="option-2-flatpak-flathub-iogithubmalfihasanfinagent">Option 2 — Flatpak / Flathub (<code>io.github.malfihasan.FinAgent</code>)<a class="headerlink" href="#option-2-flatpak-flathub-iogithubmalfihasanfinagent" title="Permanent link">&para;</a></h2>
+<p>FinAgent ships a Flatpak manifest and single-file <code>.flatpak</code> bundle that packages
+the compiled FinAgent binary and Node.js runtime in a desktop-integrated container.</p>
+<h3 id="install-from-a-flatpak-release-bundle">Install from a <code>.flatpak</code> release bundle<a class="headerlink" href="#install-from-a-flatpak-release-bundle" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>flatpak<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>FinAgent-Linux-x86_64.flatpak
+flatpak<span class="w"> </span>run<span class="w"> </span>io.github.malfihasan.FinAgent
+</code></pre></div>
+<h3 id="build-and-install-from-the-flathub-manifest">Build and install from the Flathub manifest<a class="headerlink" href="#build-and-install-from-the-flathub-manifest" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>flatpak<span class="w"> </span>remote-add<span class="w"> </span>--user<span class="w"> </span>--if-not-exists<span class="w"> </span>flathub<span class="w"> </span>https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak-builder<span class="w"> </span>--user<span class="w"> </span>--install<span class="w"> </span>--force-clean<span class="w"> </span>build-dir<span class="w"> </span>flatpak/io.github.malfihasan.FinAgent.yml
+flatpak<span class="w"> </span>run<span class="w"> </span>io.github.malfihasan.FinAgent
 </code></pre></div>
 <h2 id="desktop-integration-notes">Desktop integration notes<a class="headerlink" href="#desktop-integration-notes" title="Permanent link">&para;</a></h2>
 <p>A browser must be available for the dashboard. On minimal or remote Linux

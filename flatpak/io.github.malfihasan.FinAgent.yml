@@ -1,0 +1,70 @@
+app-id: io.github.malfihasan.FinAgent
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+command: finagent
+finish-args:
+  - --share=network
+  - --filesystem=home
+  - --talk-name=org.freedesktop.portal.Desktop
+  - --talk-name=org.freedesktop.portal.OpenURI
+
+modules:
+  - name: nodejs
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/nodejs
+      - tar -xJf node.tar.xz -C /app/nodejs --strip-components=1
+      - ln -sf /app/nodejs/bin/node /app/bin/node
+      - ln -sf /app/nodejs/bin/npm /app/bin/npm
+      - ln -sf /app/nodejs/bin/npx /app/bin/npx
+    sources:
+      - type: file
+        only-arches:
+          - x86_64
+        url: https://nodejs.org/dist/v20.18.1/node-v20.18.1-linux-x64.tar.xz
+        sha256: 29ab9cfa7dc1fbffeb6ccb7fade4bcd9df3dfe07ddbe03cd47ac8496c1f1e0e4
+        dest-filename: node.tar.xz
+      - type: file
+        only-arches:
+          - aarch64
+        url: https://nodejs.org/dist/v20.18.1/node-v20.18.1-linux-arm64.tar.xz
+        sha256: c3efdeca1cef6ebe52cd73f0d92f29502ebec1e1d08bb9f90a2a9a3abcb1f285
+        dest-filename: node.tar.xz
+
+  - name: finagent
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/lib/finagent /app/bin
+      - tar -xzf finagent-bundle.tar.gz -C /app/lib/finagent --strip-components=1
+      - chmod +x /app/lib/finagent/finagent
+      - |
+        cat > /app/bin/finagent << 'EOF'
+        #!/usr/bin/env bash
+        export PATH="/app/nodejs/bin:/app/bin:${PATH}"
+        if [[ -x "/app/lib/finagent/engine/finagent" ]]; then
+          exec "/app/lib/finagent/engine/finagent" "$@"
+        fi
+        exec "/app/lib/finagent/finagent" "$@"
+        EOF
+      - chmod +x /app/bin/finagent
+      - install -Dm644 io.github.malfihasan.FinAgent.desktop /app/share/applications/io.github.malfihasan.FinAgent.desktop
+      - install -Dm644 io.github.malfihasan.FinAgent.metainfo.xml /app/share/metainfo/io.github.malfihasan.FinAgent.metainfo.xml
+      - install -Dm644 io.github.malfihasan.FinAgent.svg /app/share/icons/hicolor/scalable/apps/io.github.malfihasan.FinAgent.svg
+    sources:
+      - type: file
+        only-arches:
+          - x86_64
+        url: https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Linux-x86_64.tar.gz
+        dest-filename: finagent-bundle.tar.gz
+      - type: file
+        only-arches:
+          - aarch64
+        url: https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Linux-arm64.tar.gz
+        dest-filename: finagent-bundle.tar.gz
+      - type: file
+        path: io.github.malfihasan.FinAgent.desktop
+      - type: file
+        path: io.github.malfihasan.FinAgent.metainfo.xml
+      - type: file
+        path: io.github.malfihasan.FinAgent.svg

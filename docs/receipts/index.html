@@ -1184,7 +1184,7 @@ dashboard (Overview, Monthly, Budget, Categories, Transactions) then shows your
 spending by what you actually bought, not just by store.</p>
 <div class="admonition note">
 <p class="admonition-title">Supported stores</p>
-<p>Walmart (in-store receipts and walmart.com order pages saved as PDF).
+<p>Walmart <strong>Beta</strong> (in-store receipts and walmart.com order pages saved as PDF).
 Amazon is listed on the Import page as <em>coming soon</em>.</p>
 </div>
 <h2 id="1-import-receipts">1. Import receipts<a class="headerlink" href="#1-import-receipts" title="Permanent link">&para;</a></h2>
@@ -1205,7 +1205,9 @@ included automatically whenever any are imported). The run does this, in order:<
 <ol>
 <li>Bank statements are processed as usual (when you also imported statements).</li>
 <li><strong>Reading</strong> — each PDF is read with a local OCR engine. The result is cached,
-   so a receipt is only ever read once. The purchase date must be found; if not,
+   so a receipt is only ever read once. The purchase date is the date and time
+   stamp printed at the bottom of the receipt (the last one wins); the date a
+   browser printed the page at the top is ignored. If no purchase date is found,
    the receipt is reported as unreadable.</li>
 <li><strong>Matching</strong> — the receipt is linked to the bank transaction with the <strong>same
    amount</strong> whose date is within <strong>±2 days</strong> of the purchase date. A bank
@@ -1222,6 +1224,12 @@ guard on <a href="../processing/">Process</a>) to re-run rules and the model on 
 items. Categories you changed yourself are kept unless you also choose to
 overwrite your dashboard edits.</p>
 <h2 id="3-see-and-correct-the-result">3. See and correct the result<a class="headerlink" href="#3-see-and-correct-the-result" title="Permanent link">&para;</a></h2>
+<p>On <strong>Import</strong>, <strong>Imported receipts</strong> keeps receipt counts, linked counts, run
+controls and attention alerts visible. Expand <strong>Receipt details and linked
+transactions</strong>, then a receipt, to see its linked bank transaction, problems and
+actions. Starting a run automatically expands the details for review; you can
+collapse them again at any time. Receipt status badges remain visible in each
+collapsed receipt row.</p>
 <p>On <strong>Transactions</strong>, a transaction with a receipt shows an arrow. Expand it to
 see every item with its category; use the pencil on an item to change its
 category (saved as <em>user defined</em>). All other pages use the item categories in
@@ -1248,7 +1256,7 @@ there until fixed:</p>
 </tr>
 <tr>
 <td>OCR engine not available</td>
-<td>Reinstall FinAgent (or install the OCR components when running from source), then run again.</td>
+<td>Packaged app: reinstall FinAgent. From source: start the dashboard from a Python environment with <code>paddlepaddle</code>, <code>paddleocr</code> and <code>pymupdf</code> installed (<code>pip install -r requirements.txt</code>), or set <code>FINAGENT_PYTHON</code> to that Python, then run again.</td>
 </tr>
 <tr>
 <td>Items do not add up to the SUBTOTAL/TOTAL</td>

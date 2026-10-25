@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.malfihasan.FinAgent</id>
+  <name>FinAgent</name>
+  <summary>Local, privacy-first personal finance categorization and dashboard</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LicenseRef-proprietary</project_license>
+  <developer id="io.github.malfihasan">
+    <name>M. Alfi Hasan</name>
+  </developer>
+  <description>
+    <p>
+      FinAgent is a local-first personal finance categorization and analytics application.
+      It combines deterministic merchant rules, optional business location lookup
+      (OpenStreetMap / Google Places), and local or cloud LLMs (Ollama, Claude, OpenRouter)
+      to turn raw bank statements and receipts into an interactive financial ledger.
+    </p>
+    <p>
+      All bank statements, configuration, and processed transaction data remain on your
+      local machine.
+    </p>
+  </description>
+  <launchable type="desktop-id">io.github.malfihasan.FinAgent.desktop</launchable>
+  <url type="homepage">https://github.com/malfihasan/financialAgent-public</url>
+  <url type="help">https://malfihasan.github.io/financialAgent-public/docs/</url>
+  <url type="bugtracker">https://github.com/malfihasan/financialAgent-public/issues</url>
+  <categories>
+    <category>Finance</category>
+    <category>Office</category>
+  </categories>
+  <content_rating type="oars-1.1" />
+  <releases>
+    <release version="1.0.2" date="2026-10-25">
+      <description>
+        <p>Multi-architecture Linux &amp; Docker support, Places API combined pipeline, and Overview dashboard improvements.</p>
+      </description>
+    </release>
+  </releases>
+</component>

@@ -300,10 +300,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#linux-x86_64" class="md-nav__link">
+  <a href="#linux-x86_64-arm64-or-flatpak" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Linux x86_64
+        Linux (x86_64, ARM64, or Flatpak)
       </span>
     </span>
   </a>
@@ -322,10 +322,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#docker" class="md-nav__link">
+  <a href="#docker-apple-silicon-arm64-intel-x86_64" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Docker
+        Docker (Apple Silicon ARM64 &amp; Intel x86_64)
       </span>
     </span>
   </a>
@@ -1060,10 +1060,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#linux-x86_64" class="md-nav__link">
+  <a href="#linux-x86_64-arm64-or-flatpak" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Linux x86_64
+        Linux (x86_64, ARM64, or Flatpak)
       </span>
     </span>
   </a>
@@ -1082,10 +1082,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#docker" class="md-nav__link">
+  <a href="#docker-apple-silicon-arm64-intel-x86_64" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        Docker
+        Docker (Apple Silicon ARM64 &amp; Intel x86_64)
       </span>
     </span>
   </a>
@@ -1128,11 +1128,15 @@
 <li>Control-click the app and choose <strong>Open</strong> on first launch.</li>
 </ol>
 <p><a href="../installation-macos/">macOS details</a></p>
-<h2 id="linux-x86_64">Linux x86_64<a class="headerlink" href="#linux-x86_64" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xzf<span class="w"> </span>FinAgent-Linux-x86_64.tar.gz
+<h2 id="linux-x86_64-arm64-or-flatpak">Linux (x86_64, ARM64, or Flatpak)<a class="headerlink" href="#linux-x86_64-arm64-or-flatpak" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xzf<span class="w"> </span>FinAgent-Linux-x86_64.tar.gz<span class="w">   </span><span class="c1"># or FinAgent-Linux-arm64.tar.gz</span>
 <span class="nb">cd</span><span class="w"> </span>finagent_bundle
 ./install.sh
 finagent
+</code></pre></div>
+<p>Or with Flatpak:</p>
+<div class="highlight"><pre><span></span><code>flatpak<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>FinAgent-Linux-x86_64.flatpak
+flatpak<span class="w"> </span>run<span class="w"> </span>io.github.malfihasan.FinAgent
 </code></pre></div>
 <p><a href="../installation-linux/">Linux details</a></p>
 <h2 id="windows-x64">Windows x64<a class="headerlink" href="#windows-x64" title="Permanent link">&para;</a></h2>
@@ -1140,9 +1144,10 @@ finagent
 </code></pre></div>
 <p>Keep <strong>Launch FinAgent</strong> selected.</p>
 <p><a href="../installation-windows/">Windows details</a></p>
-<h2 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h2>
+<h2 id="docker-apple-silicon-arm64-intel-x86_64">Docker (Apple Silicon ARM64 &amp; Intel x86_64)<a class="headerlink" href="#docker-apple-silicon-arm64-intel-x86_64" title="Permanent link">&para;</a></h2>
 <p><img alt="Start FinAgent with Docker" src="../assets/tutorial_docker_install.gif" /></p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>FinAgent-Docker-x86_64.tar.gz
+<div class="highlight"><pre><span></span><code><span class="c1"># Load FinAgent-Docker-arm64.tar.gz (Apple Silicon) or FinAgent-Docker-x86_64.tar.gz (Intel)</span>
+docker<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>FinAgent-Docker-arm64.tar.gz
 chmod<span class="w"> </span>+x<span class="w"> </span>docker_up.sh
 ./docker_up.sh<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--statements<span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/Documents/FinAgent/statements"</span><span class="w"> </span><span class="se">\</span>

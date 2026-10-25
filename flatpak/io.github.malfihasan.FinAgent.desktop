@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=FinAgent
+GenericName=Personal Finance Automation
+Comment=Local, privacy-first personal finance categorization and dashboard
+Exec=finagent
+Icon=io.github.malfihasan.FinAgent
+Terminal=true
+Categories=Finance;Office;
+Keywords=finance;budget;transactions;ledger;accounting;
+StartupNotify=true

@@ -63,10 +63,13 @@ All your data stays on your machine.
 
 ---
 
-## Linux (x86_64)
+## Linux (x86_64, ARM64, and Flatpak)
+
+### Portable Archive (`x86_64` or `ARM64`)
 
 1. **Download** the latest Linux archive:
-   [FinAgent-Linux-x86_64.tar.gz](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Linux-x86_64.tar.gz).
+   - **Intel / AMD (`x86_64`)**: [FinAgent-Linux-x86_64.tar.gz](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Linux-x86_64.tar.gz)
+   - **ARM64 (`aarch64`)**: [FinAgent-Linux-arm64.tar.gz](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Linux-arm64.tar.gz)
 
 2. **Extract**:
    ```bash
@@ -93,26 +96,54 @@ All your data stays on your machine.
    finagent --orgs boa,amex,chase
    ```
 
+### Flatpak / Flathub (`io.github.malfihasan.FinAgent`)
+
+Install from the release `.flatpak` bundle or build from the Flathub manifest in
+[`flatpak/io.github.malfihasan.FinAgent.yml`](flatpak/io.github.malfihasan.FinAgent.yml):
+
+```bash
+# Install from a single-file Flatpak bundle:
+flatpak install --user FinAgent-Linux-x86_64.flatpak
+flatpak run io.github.malfihasan.FinAgent
+
+# Or build and install from the manifest:
+flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak-builder --user --install --force-clean build-dir flatpak/io.github.malfihasan.FinAgent.yml
+flatpak run io.github.malfihasan.FinAgent
+```
+
 ---
 
-## Docker
+## Docker (Apple Silicon ARM64 & Intel x86_64)
 
 The Docker release image contains the packaged Linux executable, dashboard
 assets, and required runtime data. It does not include the private source tree
-or raw Python source files. Statement, processing, and config folders are
-bind-mounted from the host and locked to those mounts for the container's
-lifetime; Settings shows a "Docker locked" badge and hides the folder pickers.
+or raw Python source files. Native images are provided for both **Apple Silicon
+(`arm64`)** and **Intel / AMD (`x86_64`)**. Statement, processing, and config
+folders are bind-mounted from the host and locked to those mounts for the
+container's lifetime; Settings shows a "Docker locked" badge and hides the
+folder pickers.
 
 1. **Download the image and launcher files**:
    ```bash
+   # Apple Silicon (M1/M2/M3/M4) or ARM64 Linux:
+   curl -LO https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Docker-arm64.tar.gz
+
+   # Intel / AMD (x86_64):
    curl -LO https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Docker-x86_64.tar.gz
+
    curl -LO https://raw.githubusercontent.com/malfihasan/financialAgent-public/main/docker_up.sh
    curl -LO https://raw.githubusercontent.com/malfihasan/financialAgent-public/main/docker-compose.yml
    ```
 
 2. **Load the image** and make the launcher executable:
    ```bash
+   # Apple Silicon (ARM64):
+   docker load -i FinAgent-Docker-arm64.tar.gz
+
+   # Intel / AMD (x86_64):
    docker load -i FinAgent-Docker-x86_64.tar.gz
+
    chmod +x docker_up.sh
    ```
 
@@ -189,11 +220,12 @@ lifetime; Settings shows a "Docker locked" badge and hides the folder pickers.
    docker compose --project-name finagent down
    ```
 
-`FinAgent-Docker-x86_64.tar.gz` is the Docker image. `docker_up.sh` and
-`docker-compose.yml` are launcher assets (not part of the image); download
-them once from the repo — they aren't tied to a specific release version.
-The published image is x86_64. Apple Silicon Docker Desktop can run it
-through emulation; native ARM Linux requires a separately built ARM64 image.
+`FinAgent-Docker-arm64.tar.gz` (Apple Silicon / ARM64) and
+`FinAgent-Docker-x86_64.tar.gz` (Intel / AMD) are the Docker release images.
+`docker_up.sh` and `docker-compose.yml` are launcher assets (not part of the
+image); download them once from the repo — they aren't tied to a specific
+release version. Both architectures tag the loaded image as `finagent:release`
+for seamless use with `docker_up.sh`.
 
 ---
 

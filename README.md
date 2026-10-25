@@ -96,23 +96,6 @@ features such as transaction editing, budgets, statement import, processing,
 categorization, rules, and settings; those features are not active in the online
 demo. No personal financial data is used.
 
-<table>
-   <tr>
-      <td align="center" width="33%">
-         <a href="assets/dashboard-overview.png"><img src="assets/dashboard-overview.png" alt="FinAgent overview dashboard" width="100%"></a>
-         <br><sub><b>Overview</b></sub>
-      </td>
-      <td align="center" width="33%">
-         <a href="assets/dashboard-monthly.png"><img src="assets/dashboard-monthly.png" alt="FinAgent monthly dashboard" width="100%"></a>
-         <br><sub><b>Monthly trends</b></sub>
-      </td>
-      <td align="center" width="33%">
-         <a href="assets/dashboard-transactions.png"><img src="assets/dashboard-transactions.png" alt="FinAgent transactions dashboard" width="100%"></a>
-         <br><sub><b>Transactions</b></sub>
-      </td>
-   </tr>
-</table>
-
 ## 📚 Documentation
 
 Full installation, setup, terminal, and configuration guides are available online:
@@ -185,10 +168,11 @@ work as expected); from Finder it opens Terminal.app for you.
 > See the full [macOS installation guide](https://malfihasan.github.io/financialAgent-public/docs/installation-macos/)
 > for more detail.
 
-### 🐧 Linux (x86_64)
+### 🐧 Linux (x86_64, ARM64 & Flatpak)
 
-1. **Download** the latest Linux archive:
-   [FinAgent-Linux-x86_64.tar.gz](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Linux-x86_64.tar.gz).
+1. **Download** the latest Linux archive for your architecture:
+   - **Intel / AMD (`x86_64`)**: [FinAgent-Linux-x86_64.tar.gz](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Linux-x86_64.tar.gz)
+   - **ARM64 (`aarch64`)**: [FinAgent-Linux-arm64.tar.gz](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Linux-arm64.tar.gz)
 
 2. **Extract**:
    ```bash
@@ -203,12 +187,19 @@ work as expected); from Finder it opens Terminal.app for you.
    ```
    Or run it in place without installing: `./finagent --setup`.
 
-4. **Run the setup wizard** (first time only):
+4. **Flatpak / Flathub alternative (`io.github.malfihasan.FinAgent`)**:
+   Install via a single-file `.flatpak` bundle or build using the manifest in [`flatpak/io.github.malfihasan.FinAgent.yml`](flatpak/io.github.malfihasan.FinAgent.yml):
+   ```bash
+   flatpak install --user FinAgent-Linux-x86_64.flatpak
+   flatpak run io.github.malfihasan.FinAgent
+   ```
+
+5. **Run the setup wizard** (first time only):
    ```bash
    finagent --setup
    ```
 
-5. **Process your statements**:
+6. **Process your statements**:
    ```bash
    finagent --orgs boa,amex,chase
    ```
@@ -225,10 +216,11 @@ work as expected); from Finder it opens Terminal.app for you.
 See the [Windows installation guide](INSTALL.md#windows) for SmartScreen and
 installer troubleshooting.
 
-### 🐳 Docker
+### 🐳 Docker (Apple Silicon ARM64 & Intel x86_64)
 
-Every release includes a Docker image containing the packaged executable,
-dashboard, documentation, Node.js runtime, and Ollama. 
+Every release includes native Docker images for both **Apple Silicon (`arm64`)**
+and **Intel / AMD (`x86_64`)** containing the packaged executable, dashboard,
+documentation, Node.js runtime, and Ollama.
 
 Install Docker Desktop, or Docker Engine with Docker Compose, before continuing.
 
@@ -238,15 +230,23 @@ Install Docker Desktop, or Docker Engine with Docker Compose, before continuing.
 
 <p align="center"><em>Docker installation quick start: download the release files and start FinAgent.</em></p>
 
-1. **Download** `FinAgent-Docker-x86_64.tar.gz` from the
-   [latest release](https://github.com/malfihasan/financialAgent-public/releases/latest),
-   plus [`docker_up.sh`](https://raw.githubusercontent.com/malfihasan/financialAgent-public/main/docker_up.sh)
+1. **Download** the Docker image archive for your architecture from the
+   [latest release](https://github.com/malfihasan/financialAgent-public/releases/latest):
+   - **Apple Silicon (M1/M2/M3/M4 / ARM64)**: [`FinAgent-Docker-arm64.tar.gz`](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Docker-arm64.tar.gz)
+   - **Intel / AMD (`x86_64`)**: [`FinAgent-Docker-x86_64.tar.gz`](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Docker-x86_64.tar.gz)
+   
+   Plus [`docker_up.sh`](https://raw.githubusercontent.com/malfihasan/financialAgent-public/main/docker_up.sh)
    and [`docker-compose.yml`](https://raw.githubusercontent.com/malfihasan/financialAgent-public/main/docker-compose.yml)
    directly from the repo (they aren't tied to a specific release).
 
 2. **Load the image** and make the launcher executable:
    ```bash
+   # Apple Silicon (ARM64):
+   docker load -i FinAgent-Docker-arm64.tar.gz
+
+   # Intel / AMD (x86_64):
    docker load -i FinAgent-Docker-x86_64.tar.gz
+
    chmod +x docker_up.sh
    ```
 

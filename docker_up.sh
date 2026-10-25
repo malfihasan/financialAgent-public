@@ -232,8 +232,12 @@ if [[ "$DRY_RUN" == "true" ]]; then
 fi
 
 if ! docker image inspect "$IMAGE" >/dev/null 2>&1; then
+  HOST_ARCH_HINT="x86_64"
+  case "$(uname -m)" in
+    arm64|aarch64) HOST_ARCH_HINT="arm64" ;;
+  esac
   echo "Docker image '$IMAGE' is not loaded." >&2
-  echo "Run: docker load -i FinAgent-Docker-x86_64.tar.gz" >&2
+  echo "Run: docker load -i FinAgent-Docker-${HOST_ARCH_HINT}.tar.gz" >&2
   exit 1
 fi
 
