@@ -21,6 +21,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: publish-release-${{ github.event.client_payload.version || github.event.inputs.version }}
+  cancel-in-progress: false
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -86,29 +90,17 @@ jobs:
             echo "Release metadata already up to date."
           fi
 
-      - name: Download release assets from private repo
+      - name: Mirror assets one at a time and publish the complete release
         env:
-          GH_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN }}
+          SOURCE_GH_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
           VERSION: ${{ steps.vars.outputs.version }}
           PRIVATE_REPO: ${{ steps.vars.outputs.private_repo }}
         run: |
-          mkdir -p release-assets
-          gh release download "v${VERSION}" \
-            --repo "${PRIVATE_REPO}" \
-            --dir release-assets \
-            --pattern "FinAgent-*"
-          echo "Downloaded assets:"
-          ls -lh release-assets/
-
-      - name: Create public GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: v${{ steps.vars.outputs.version }}
-          name: FinAgent v${{ steps.vars.outputs.version }}
-          draft: false
-          prerelease: false
-          body_path: INSTALL.md
-          files: release-assets/*
+          set -euo pipefail
+          python3 .github/scripts/release_assets.py mirror \
+            --source-repo "$PRIVATE_REPO" --target-repo "$GITHUB_REPOSITORY" \
+            --tag "v${VERSION}" --notes-file INSTALL.md
 
       - name: Keep only the 3 most recent releases
         env:
