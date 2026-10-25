@@ -1215,19 +1215,22 @@ source tree or raw Python source files.</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Docker Desktop, or Docker Engine with Docker Compose.</li>
-<li>The Docker image archive matching your system architecture from the latest release:</li>
-<li><strong>Apple Silicon (M1/M2/M3/M4 / ARM64)</strong>: <code>FinAgent-Docker-arm64.tar.gz</code></li>
-<li><strong>Intel / AMD (<code>x86_64</code>)</strong>: <code>FinAgent-Docker-x86_64.tar.gz</code></li>
-<li><code>docker_up.sh</code> and <code>docker-compose.yml</code> from the public repository.</li>
+<li>The checksum manifest and <strong>all</strong> image parts from one release:</li>
+<li><strong>Apple Silicon / ARM64</strong>: <code>FinAgent-Docker-arm64.tar.gz.sha256</code> and <code>FinAgent-Docker-arm64.tar.gz.part-*</code>.</li>
+<li><strong>Intel / AMD (<code>x86_64</code>)</strong>: <code>FinAgent-Docker-x86_64.tar.gz.sha256</code> and <code>FinAgent-Docker-x86_64.tar.gz.part-*</code>.</li>
+<li><code>load_docker_release.sh</code>, <code>docker_up.sh</code>, and <code>docker-compose.yml</code> from that release.</li>
+<li>Bash, gzip, and sha256sum (Linux) or shasum (macOS).</li>
 <li>One host folder for statements and one for processing output.</li>
 </ul>
 <h2 id="load-and-start">Load and start<a class="headerlink" href="#load-and-start" title="Permanent link">&para;</a></h2>
-<p>Keep the three downloaded files in one folder, then run:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># On Apple Silicon (M1/M2/M3/M4) or ARM64 Linux:</span>
-docker<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>FinAgent-Docker-arm64.tar.gz
-
-<span class="c1"># On Intel / AMD (x86_64):</span>
-docker<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>FinAgent-Docker-x86_64.tar.gz
+<p>Keep all downloaded files together in a fresh folder; never mix release versions.
+Parts are at most 1 GiB, below GitHub's per-file limit. The loader verifies all
+checksums and the compressed stream before importing, without writing a combined
+archive. Docker still needs disk space for the unpacked image. The full runtime,
+including GPU libraries, is retained.</p>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Detect the host architecture and verify/load its parts:</span>
+bash<span class="w"> </span>load_docker_release.sh
 
 chmod<span class="w"> </span>+x<span class="w"> </span>docker_up.sh
 
@@ -1236,6 +1239,9 @@ chmod<span class="w"> </span>+x<span class="w"> </span>docker_up.sh
 <span class="w">  </span>--processing<span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/Documents/FinAgent/processing"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--no-ollama-model
 </code></pre></div>
+<p>You can provide an explicit manifest:
+<code>bash load_docker_release.sh FinAgent-Docker-arm64.tar.gz.sha256</code>.
+Older single-file releases still support <code>docker load -i &lt;archive&gt;.tar.gz</code>.</p>
 <p>Open the dashboard at <a href="http://localhost:3001">http://localhost:3001</a> and the
 local documentation at <a href="http://localhost:3003">http://localhost:3003</a>.
 Missing host folders are created automatically. Their paths appear locked in
@@ -1352,9 +1358,9 @@ docker<span class="w"> </span>compose<span class="w"> </span>--project-name<span
 ports, and provider options you want.</p>
 <h2 id="update">Update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Download the new image archive (<code>FinAgent-Docker-arm64.tar.gz</code> or <code>FinAgent-Docker-x86_64.tar.gz</code>) and current launcher files.</li>
+<li>Download the new manifest, all matching parts, and helper files into a fresh folder.</li>
 <li>Run <code>docker compose --project-name finagent down</code>.</li>
-<li>Run <code>docker load -i FinAgent-Docker-arm64.tar.gz</code> (or <code>FinAgent-Docker-x86_64.tar.gz</code>).</li>
+<li>Run <code>bash load_docker_release.sh</code>.</li>
 <li>Start again with your normal <code>./docker_up.sh</code> options.</li>
 </ol>
 <p>Mounted data, configuration, and Ollama models remain available.</p>
@@ -1364,7 +1370,8 @@ ports, and provider options you want.</p>
 <li><strong>Cloud key missing:</strong> provide the key with <code>--env-file</code> or save it in Settings.</li>
 <li><strong>Ollama model unavailable:</strong> restart with <code>--ollama-model</code> or
   <code>--ollama-model &lt;name&gt;</code>.</li>
-<li><strong>Image not loaded:</strong> run <code>docker load -i FinAgent-Docker-arm64.tar.gz</code> (Apple Silicon / ARM64) or <code>docker load -i FinAgent-Docker-x86_64.tar.gz</code> (Intel / x86_64).</li>
+<li><strong>Image not loaded:</strong> run <code>bash load_docker_release.sh</code>.</li>
+<li><strong>Missing part/checksum mismatch:</strong> download every part and the manifest from the same release again. Do not bypass checksum validation.</li>
 <li><strong>All Docker launcher options:</strong> run <code>./docker_up.sh --help</code>.</li>
 </ul>
 

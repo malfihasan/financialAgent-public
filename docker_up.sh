@@ -237,7 +237,8 @@ if ! docker image inspect "$IMAGE" >/dev/null 2>&1; then
     arm64|aarch64) HOST_ARCH_HINT="arm64" ;;
   esac
   echo "Docker image '$IMAGE' is not loaded." >&2
-  echo "Run: docker load -i FinAgent-Docker-${HOST_ARCH_HINT}.tar.gz" >&2
+  echo "Download the matching manifest and all parts, then run: bash load_docker_release.sh" >&2
+  echo "For older single-file releases: docker load -i FinAgent-Docker-${HOST_ARCH_HINT}.tar.gz" >&2
   exit 1
 fi
 

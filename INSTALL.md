@@ -124,28 +124,31 @@ folders are bind-mounted from the host and locked to those mounts for the
 container's lifetime; Settings shows a "Docker locked" badge and hides the
 folder pickers.
 
-1. **Download the image and launcher files**:
+1. **Download the image parts and launcher files** from one
+   [release](https://github.com/malfihasan/financialAgent-public/releases/latest):
+   - Apple Silicon / ARM64: `FinAgent-Docker-arm64.tar.gz.sha256` and **every**
+     `FinAgent-Docker-arm64.tar.gz.part-*` file.
+   - Intel / AMD: `FinAgent-Docker-x86_64.tar.gz.sha256` and **every**
+     `FinAgent-Docker-x86_64.tar.gz.part-*` file.
+   - Also download `load_docker_release.sh`, `docker_up.sh`, and `docker-compose.yml`.
+
+   Keep these files together in a fresh folder. Do not mix parts from different
+   releases. Each part is at most 1 GiB, below GitHub's per-file limit. The full
+   application and Ollama GPU libraries are retained; no model download is needed
+   to load the image.
+
+2. **Verify and load the image** and make the launcher executable:
    ```bash
-   # Apple Silicon (M1/M2/M3/M4) or ARM64 Linux:
-   curl -LO https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Docker-arm64.tar.gz
-
-   # Intel / AMD (x86_64):
-   curl -LO https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Docker-x86_64.tar.gz
-
-   curl -LO https://raw.githubusercontent.com/malfihasan/financialAgent-public/main/docker_up.sh
-   curl -LO https://raw.githubusercontent.com/malfihasan/financialAgent-public/main/docker-compose.yml
-   ```
-
-2. **Load the image** and make the launcher executable:
-   ```bash
-   # Apple Silicon (ARM64):
-   docker load -i FinAgent-Docker-arm64.tar.gz
-
-   # Intel / AMD (x86_64):
-   docker load -i FinAgent-Docker-x86_64.tar.gz
-
+   # Detects the host architecture; checks all parts before loading.
+   bash load_docker_release.sh
    chmod +x docker_up.sh
    ```
+
+   The loader uses Bash, `gzip`, and `sha256sum` or macOS `shasum`; no Python is
+   required. It streams the parts into Docker without creating a combined archive.
+   Docker still needs space for the unpacked image. An explicit manifest path is
+   also supported: `bash load_docker_release.sh FinAgent-Docker-arm64.tar.gz.sha256`.
+   For older single-file releases, keep using `docker load -i <archive>.tar.gz`.
 
 3. **Preview the mounts and ports** without starting a container:
    ```bash
@@ -220,11 +223,10 @@ folder pickers.
    docker compose --project-name finagent down
    ```
 
-`FinAgent-Docker-arm64.tar.gz` (Apple Silicon / ARM64) and
-`FinAgent-Docker-x86_64.tar.gz` (Intel / AMD) are the Docker release images.
-`docker_up.sh` and `docker-compose.yml` are launcher assets (not part of the
-image); download them once from the repo — they aren't tied to a specific
-release version. Both architectures tag the loaded image as `finagent:release`
+The `.part-*` assets together form one Docker release image per architecture;
+the `.sha256` manifest lists the ordered parts and their checksums.
+`load_docker_release.sh`, `docker_up.sh`, and `docker-compose.yml` are small helper
+assets, not additional application copies. Both architectures tag the loaded image as `finagent:release`
 for seamless use with `docker_up.sh`.
 
 ---

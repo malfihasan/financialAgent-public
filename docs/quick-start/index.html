@@ -1146,8 +1146,9 @@ flatpak<span class="w"> </span>run<span class="w"> </span>io.github.malfihasan.F
 <p><a href="../installation-windows/">Windows details</a></p>
 <h2 id="docker-apple-silicon-arm64-intel-x86_64">Docker (Apple Silicon ARM64 &amp; Intel x86_64)<a class="headerlink" href="#docker-apple-silicon-arm64-intel-x86_64" title="Permanent link">&para;</a></h2>
 <p><img alt="Start FinAgent with Docker" src="../assets/tutorial_docker_install.gif" /></p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Load FinAgent-Docker-arm64.tar.gz (Apple Silicon) or FinAgent-Docker-x86_64.tar.gz (Intel)</span>
-docker<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>FinAgent-Docker-arm64.tar.gz
+<div class="highlight"><pre><span></span><code><span class="c1"># Download the .sha256 manifest, every .part-* file for your architecture,</span>
+<span class="c1"># and the three helper files from one release into the same folder.</span>
+bash<span class="w"> </span>load_docker_release.sh
 chmod<span class="w"> </span>+x<span class="w"> </span>docker_up.sh
 ./docker_up.sh<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--statements<span class="w"> </span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/Documents/FinAgent/statements"</span><span class="w"> </span><span class="se">\</span>

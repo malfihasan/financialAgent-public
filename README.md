@@ -230,25 +230,27 @@ Install Docker Desktop, or Docker Engine with Docker Compose, before continuing.
 
 <p align="center"><em>Docker installation quick start: download the release files and start FinAgent.</em></p>
 
-1. **Download** the Docker image archive for your architecture from the
+1. **Download** the Docker image parts for your architecture from the
    [latest release](https://github.com/malfihasan/financialAgent-public/releases/latest):
-   - **Apple Silicon (M1/M2/M3/M4 / ARM64)**: [`FinAgent-Docker-arm64.tar.gz`](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Docker-arm64.tar.gz)
-   - **Intel / AMD (`x86_64`)**: [`FinAgent-Docker-x86_64.tar.gz`](https://github.com/malfihasan/financialAgent-public/releases/latest/download/FinAgent-Docker-x86_64.tar.gz)
+   - **Apple Silicon / ARM64**: `FinAgent-Docker-arm64.tar.gz.sha256` and every
+     `FinAgent-Docker-arm64.tar.gz.part-*` file.
+   - **Intel / AMD**: `FinAgent-Docker-x86_64.tar.gz.sha256` and every
+     `FinAgent-Docker-x86_64.tar.gz.part-*` file.
    
-   Plus [`docker_up.sh`](https://raw.githubusercontent.com/malfihasan/financialAgent-public/main/docker_up.sh)
-   and [`docker-compose.yml`](https://raw.githubusercontent.com/malfihasan/financialAgent-public/main/docker-compose.yml)
-   directly from the repo (they aren't tied to a specific release).
+   Also download `load_docker_release.sh`, `docker_up.sh`, and `docker-compose.yml`
+   from that release. Keep the manifest and all parts together in a fresh folder;
+   do not mix versions. Parts are at most 1 GiB; the full runtime is retained.
 
 2. **Load the image** and make the launcher executable:
    ```bash
-   # Apple Silicon (ARM64):
-   docker load -i FinAgent-Docker-arm64.tar.gz
-
-   # Intel / AMD (x86_64):
-   docker load -i FinAgent-Docker-x86_64.tar.gz
-
+   # Checks every part, detects the host architecture, and streams into Docker.
+   bash load_docker_release.sh
    chmod +x docker_up.sh
    ```
+
+   No combined archive is created. Older single-file releases still support
+   `docker load -i <archive>.tar.gz`. See [Docker installation](INSTALL.md#docker-apple-silicon-arm64--intel-x86_64)
+   for requirements and explicit architecture selection.
 
 3. **Start FinAgent.** This basic command skips the optional model download;
    you can select a provider later in Settings:
