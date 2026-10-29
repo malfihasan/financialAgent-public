@@ -12,6 +12,10 @@
 
 </div>
 
+> 📝 **Why FinAgent?** The story behind the project — the problem it solves and
+> why it might be right for you:
+> **[Why I Built FinAgent — and Why You Might Want to Use It](https://pathoftruth3.substack.com/p/why-i-built-finagentand-why-you-might?r=6kx47y&utm_campaign=post&utm_medium=web)**
+
 FinAgent turns downloaded bank statements into categorized transactions, budgets,
 and financial trends without requiring bank credentials or a hosted FinAgent account.
 Statement files, rules, configuration, and processed results remain in folders you
